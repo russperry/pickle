@@ -499,10 +499,9 @@ textarea,input{font-family:var(--sans)}
 
 <script>
 // ─── CONFIG ───────────────────────────────────────────────────────
-const API_URL = 'https://pickle-api.vercel.app'; // update after Vercel deploy
+const API_URL = 'https://pickle-api.vercel.app';
+const CONTENT_URL = 'https://russperry.github.io/pickle/content.json';
 const SESSION_KEY = 'dpCeoHubV3';
-const SESSION_DAYS = 30;
-const CONTENT_KEY = 'dpCeoHubContent';
 const ADMIN_EMAIL = 'russ@designpickle.com';
 
 // Fallback whitelist for when API is unavailable
@@ -533,22 +532,79 @@ function getSession() {
 }
 function clearSession() { localStorage.removeItem(SESSION_KEY); }
 
-// ─── CONTENT STORE (admin edits, shared via localStorage) ─────────
-function getContent() {
-  try { return JSON.parse(localStorage.getItem(CONTENT_KEY) || '{}'); } catch(e) { return {}; }
+// ─── CONTENT (fetched from content.json in repo) ──────────────────
+async function loadContent() {
+  try {
+    const res = await fetch(CONTENT_URL + '?t=' + Date.now());
+    if (!res.ok) return;
+    const c = await res.json();
+    applyContent(c);
+  } catch(e) { /* silently keep hardcoded fallback */ }
 }
-function saveContent(key, val) {
-  const c = getContent();
-  c[key] = val;
-  localStorage.setItem(CONTENT_KEY, JSON.stringify(c));
-}
-function applyContent() {
-  const c = getContent();
-  if (c.postTag) document.getElementById('postTag').textContent = c.postTag;
-  if (c.postTitle) document.getElementById('postTitle').textContent = c.postTitle;
-  if (c.postBody) {
-    document.getElementById('postBody').innerHTML = c.postBody.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
+function applyContent(c) {
+  if (!c) return;
+
+  // CEO Post
+  if (c.post) {
+    if (c.post.tag) document.getElementById('postTag').textContent = c.post.tag;
+    if (c.post.title) document.getElementById('postTitle').textContent = c.post.title;
+    if (c.post.body) {
+      document.getElementById('postBody').innerHTML = c.post.body.split('\n\n').map(p => `<p>${p}</p>`).join('');
+    }
   }
+
+  // Outcomes
+  if (c.outcomes) {
+    if (c.outcomes.week) renderOutcomes('weekList', c.outcomes.week);
+    if (c.outcomes.month) renderOutcomes('monthList', c.outcomes.month);
+  }
+
+  // Reading / Watching
+  if (c.reading && c.reading.length) {
+    const list = document.querySelector('.media-list');
+    if (list) {
+      list.innerHTML = c.reading.map(item => `
+        <a href="${item.url}" target="_blank" class="media-item">
+          <span class="media-type ${item.type}">${item.type}</span>
+          <div class="media-meta">
+            <div class="media-title">${item.title}</div>
+            <div class="media-source">${item.source}</div>
+          </div>
+        </a>`).join('');
+    }
+  }
+
+  // Archive
+  if (c.archive && c.archive.length) {
+    const archList = document.querySelector('.archive-list');
+    if (archList) {
+      archList.innerHTML = c.archive.map(item => `
+        <div class="archive-item">
+          <div class="archive-item-header">
+            <span class="archive-item-title">${item.title}</span>
+            <span class="archive-item-date">${item.date}</span>
+          </div>
+          <div class="archive-item-body">${item.body}</div>
+        </div>`).join('');
+    }
+  }
+
+  // Last updated
+  if (c.meta && c.meta.lastUpdated) {
+    const el = document.getElementById('lastUpdated');
+    if (el) el.textContent = 'Updated ' + c.meta.lastUpdated;
+  }
+}
+
+function renderOutcomes(listId, items) {
+  const list = document.getElementById(listId);
+  if (!list) return;
+  list.innerHTML = items.map(item => {
+    const cls = item.status === 'done' ? 'done' : item.status === 'progress' ? 'progress' : 'pending';
+    const char = item.status === 'done' ? '✓' : item.status === 'progress' ? '→' : '';
+    return `<li class="outcome-item"><span class="outcome-check ${cls}">${char}</span><span class="outcome-text">${item.text}</span></li>`;
+  }).join('');
 }
 
 // ─── AUTH FORM ────────────────────────────────────────────────────
@@ -618,7 +674,7 @@ function showApp(session) {
     document.getElementById('adminBadge').style.display = 'inline';
   }
   document.getElementById('headerEmail').textContent = session.email;
-  applyContent();
+  loadContent();
 }
 function showAuthGate() {
   document.getElementById('authGate').classList.remove('hidden');
@@ -637,6 +693,10 @@ document.getElementById('signoutBtn').addEventListener('click', function() {
 });
 
 // ─── ADMIN EDITOR ─────────────────────────────────────────────────
+// Content is driven by content.json in the repo.
+// To update: edit content.json and push (Pin can do this on request).
+// The edit form below is a drafting aid only — changes here update
+// the page preview but do NOT persist until Pin commits content.json.
 function toggleEdit(section) {
   const form = document.getElementById('edit-' + section);
   if (!form) return;
@@ -653,25 +713,24 @@ function savePost() {
   const tag = document.getElementById('editPostTag').value.trim();
   const title = document.getElementById('editPostTitle').value.trim();
   const body = document.getElementById('editPostBody').value.trim();
-  if (tag) { document.getElementById('postTag').textContent = tag; saveContent('postTag', tag); }
-  if (title) { document.getElementById('postTitle').textContent = title; saveContent('postTitle', title); }
-  if (body) {
-    document.getElementById('postBody').innerHTML = body.split('\n\n').map(p => `<p>${p}</p>`).join('');
-    saveContent('postBody', body);
-  }
+  if (tag) document.getElementById('postTag').textContent = tag;
+  if (title) document.getElementById('postTitle').textContent = title;
+  if (body) document.getElementById('postBody').innerHTML = body.split('\n\n').map(p => `<p>${p}</p>`).join('');
   toggleEdit('post');
+  alert('Preview updated! Tell Pin to commit this to content.json to make it permanent for everyone.');
 }
 function addOutcome(tab) {
-  const text = prompt('Outcome text (e.g. "Cost plan finalized"):');
+  const text = prompt('Outcome text:');
   if (!text) return;
   const status = prompt('Status: done / progress / pending', 'pending') || 'pending';
   const list = document.getElementById(tab + 'List');
   const li = document.createElement('li');
   li.className = 'outcome-item';
-  const checkClass = status === 'done' ? 'done' : status === 'progress' ? 'progress' : 'pending';
-  const checkChar = status === 'done' ? '✓' : status === 'progress' ? '→' : '';
-  li.innerHTML = `<span class="outcome-check ${checkClass}">${checkChar}</span><span class="outcome-text">${text}</span>`;
+  const cls = status === 'done' ? 'done' : status === 'progress' ? 'progress' : 'pending';
+  const char = status === 'done' ? '✓' : status === 'progress' ? '→' : '';
+  li.innerHTML = `<span class="outcome-check ${cls}">${char}</span><span class="outcome-text">${text}</span>`;
   list.appendChild(li);
+  alert('Preview updated! Tell Pin to commit this to content.json to make it permanent.');
 }
 
 // ─── OUTCOME TABS ─────────────────────────────────────────────────

@@ -1,0 +1,38 @@
+{
+  "post": {
+    "tag": "Week of May 5",
+    "title": "Chapter Three is Here — Here's What That Actually Means",
+    "body": "We're in wartime. I don't say that to be dramatic — I say it because clarity is a gift right now. Every dollar, every hire, every meeting needs to move us toward one of three lanes: Legacy MRR, Jar, or CHIPS.\n\nThis week I'm focused on closing the cost restructuring plan with Niket and getting the Chapter Three letter in front of all of you. You deserve to hear it directly from me. More coming Thursday."
+  },
+  "outcomes": {
+    "week": [
+      { "status": "progress", "text": "Cost plan finalized with Niket — 300k/month target" },
+      { "status": "done", "text": "AI CoS Course live — 4 enrolled, $6K revenue" },
+      { "status": "pending", "text": "Chapter Three letter sent to full team" },
+      { "status": "pending", "text": "CHIPS sprint plan confirmed with Arnoe" },
+      { "status": "done", "text": "CEO Hub launched for Design Pickle team" }
+    ],
+    "month": [
+      { "status": "progress", "text": "300k/month savings executed & tracked" },
+      { "status": "progress", "text": "CHIPS team formed + 3-week sprint underway" },
+      { "status": "done", "text": "AI for Operators live with paying students" },
+      { "status": "pending", "text": "Canva GTM plan activated post-Create" },
+      { "status": "pending", "text": "Board & team letters sent and acknowledged" }
+    ]
+  },
+  "reading": [
+    { "type": "read", "title": "40 MCP Servers That Turn Claude Into a Productivity Machine", "source": "@eng_khairallah1 on X · Apr 22", "url": "https://x.com/eng_khairallah1" },
+    { "type": "read", "title": "Introducing Canva AI 2.0: Reimagining how the world creates", "source": "Canva Newsroom · Apr 2026", "url": "https://canva.com/newsroom" },
+    { "type": "read", "title": "Ethereum Whitepaper — Smart Contracts & Decentralized Apps", "source": "ethereum.org · Foundational", "url": "https://ethereum.org/en/whitepaper/" },
+    { "type": "read", "title": "The 9 Levels of Leadership Every Founder Should Understand", "source": "Ninety.io · Mark Abbott", "url": "https://www.ninety.io/blog/the-9-levels-of-leadership" },
+    { "type": "read", "title": "The Most Boring Billion-Dollar Businesses of 2027", "source": "@rohit4verse on X · Apr 22", "url": "https://x.com/rohit4verse" }
+  ],
+  "archive": [
+    { "date": "Apr 28", "title": "Week of Apr 28 — AI Team Rollout Update", "body": "Placeholder — will be replaced with published weekly summary." },
+    { "date": "Apr 21", "title": "Week of Apr 21 — CHIPS Vision", "body": "Placeholder — will be replaced with published weekly summary." },
+    { "date": "Apr 14", "title": "Week of Apr 14 — The Cost Conversation", "body": "Placeholder — will be replaced with published weekly summary." }
+  ],
+  "meta": {
+    "lastUpdated": "2026-05-05"
+  }
+}
