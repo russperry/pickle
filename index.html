@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEO Hub — Design Pickle</title>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="theme-color" content="#0B0C0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0B0C0B;--volt:#D5FF02;--white:#F5F5F3;--gray:#999;--dim:#666;--dark-card:#141514;--border:#1E1F1E;--serif:'Instrument Serif',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--max-w:760px;--wide-w:1080px;--section-pad:96px}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh}
+::selection{background:var(--volt);color:var(--black)}
+a{color:var(--volt);text-decoration:none;transition:opacity .2s}
+a:hover{opacity:.8}
+img{max-width:100%;display:block}
+
+/* Layout */
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
+.container-wide{max-width:var(--wide-w);margin:0 auto;padding:0 24px}
+section{padding:var(--section-pad) 0}
+
+/* Animations */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal{opacity:1;transform:none}
+}
+
+/* Auth Gate */
+.auth-gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.auth-gate.hidden{display:none}
+.auth-card{background:var(--dark-card);border:1px solid var(--border);border-radius:18px;padding:48px 40px;max-width:480px;width:100%;text-align:center}
+.auth-logo{width:140px;height:auto;margin:0 auto 32px;filter:brightness(0) invert(1)}
+.auth-eyebrow{font-size:13px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.auth-headline{font-family:var(--serif);font-size:42px;line-height:1.1;letter-spacing:-.02em;color:var(--white);margin-bottom:16px}
+.auth-body{color:var(--gray);font-size:16px;line-height:1.65;margin-bottom:32px}
+.auth-form{margin-bottom:20px}
+.auth-label{display:block;text-align:left;font-size:14px;font-weight:500;color:var(--white);margin-bottom:8px}
+.auth-input{width:100%;background:var(--black);border:1px solid var(--border);border-radius:12px;padding:14px 18px;color:var(--white);font-family:var(--sans);font-size:16px;transition:border-color .2s}
+.auth-input:focus{outline:none;border-color:var(--volt)}
+.auth-input::placeholder{color:var(--dim)}
+.auth-btn{width:100%;font-family:var(--sans);font-size:16px;font-weight:600;background:var(--volt);color:var(--black);padding:16px 32px;border-radius:100px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:16px}
+.auth-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(213,255,2,.3)}
+.auth-btn:active{transform:translateY(0)}
+.auth-helper{font-size:13px;color:var(--dim);line-height:1.6;margin-top:16px}
+.auth-message{margin-top:24px;padding:16px;border-radius:12px;font-size:14px;line-height:1.6}
+.auth-message.error{background:rgba(255,59,48,.1);border:1px solid rgba(255,59,48,.3);color:#ff3b30}
+.auth-message.success{background:rgba(213,255,2,.08);border:1px solid rgba(213,255,2,.3);color:var(--volt)}
+.auth-message.blocked{background:rgba(255,149,0,.1);border:1px solid rgba(255,149,0,.3);color:#ff9500}
+.magic-link-btn{display:inline-block;margin-top:16px;font-family:var(--sans);font-size:15px;font-weight:600;background:var(--volt);color:var(--black);padding:12px 28px;border-radius:100px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;text-decoration:none}
+.magic-link-btn:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(213,255,2,.25);opacity:1}
+
+/* App */
+.app{display:none}
+.app.active{display:block}
+
+/* Site Header */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(11,12,11,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:16px 24px}
+.header-inner{max-width:var(--wide-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.header-brand{display:flex;align-items:center;gap:16px}
+.header-logo{height:28px;width:auto;filter:brightness(0) invert(1)}
+.header-title{font-family:var(--serif);font-size:20px;color:var(--white);letter-spacing:-.02em}
+.header-nav{display:flex;gap:24px}
+.header-nav a{color:var(--gray);font-size:14px;font-weight:500;letter-spacing:.02em;transition:color .2s}
+.header-nav a:hover{color:var(--volt);opacity:1}
+.header-user{display:flex;align-items:center;gap:16px}
+.user-pill{font-size:13px;color:var(--dim);padding:8px 14px;background:var(--dark-card);border:1px solid var(--border);border-radius:100px;white-space:nowrap}
+.user-pill .role{color:var(--volt);font-weight:600}
+.btn-signout{font-size:13px;font-weight:600;background:transparent;color:var(--volt);padding:8px 18px;border-radius:100px;border:1px solid var(--volt);cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-signout:hover{background:var(--volt);color:var(--black);opacity:1}
+
+/* Section Eyebrow */
+.section-eyebrow{font-size:13px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:16px}
+
+/* Hero */
+.hero{padding:120px 0 var(--section-pad)}
+.hero-eyebrow{font-size:13px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--volt);margin-bottom:24px}
+.hero h1{font-family:var(--serif);font-size:clamp(42px,6vw,64px);line-height:1.08;letter-spacing:-.03em;color:var(--white);margin-bottom:32px;max-width:680px}
+.hero-copy{color:var(--gray);font-size:18px;line-height:1.75;margin-bottom:20px;max-width:640px}
+.hero-signature{font-family:var(--serif);font-size:20px;color:var(--white);margin:32px 0 12px}
+.hero-meta{font-size:14px;color:var(--dim);letter-spacing:.04em}
+
+/* Section Titles */
+.section-title{font-family:var(--serif);font-size:clamp(32px,5vw,48px);line-height:1.15;letter-spacing:-.02em;margin-bottom:20px;color:var(--white)}
+.section-intro{color:var(--gray);font-size:17px;line-height:1.65;margin-bottom:48px;max-width:640px}
+
+/* Latest Update */
+.latest-update{background:var(--dark-card);border:2px solid var(--volt);border-radius:18px;padding:40px;margin-top:32px}
+.update-header{margin-bottom:24px}
+.update-title{font-family:var(--serif);font-size:28px;color:var(--white);margin-bottom:8px;letter-spacing:-.02em}
+.update-date{font-size:14px;color:var(--dim);letter-spacing:.03em}
+.update-body{color:var(--gray);font-size:17px;line-height:1.7;margin-bottom:24px}
+.update-bullets{list-style:none;margin:24px 0}
+.update-bullets li{padding:12px 0;border-bottom:1px solid var(--border);color:var(--white);font-size:16px;display:flex;align-items:flex-start;gap:12px}
+.update-bullets li:first-child{border-top:1px solid var(--border)}
+.update-bullets li::before{content:"→";color:var(--volt);font-weight:600;flex-shrink:0}
+.update-cta{display:inline-block;color:var(--volt);font-size:16px;font-weight:600;margin-top:16px;transition:transform .2s}
+.update-cta:hover{transform:translateX(4px);opacity:1}
+
+/* Strategy Docs */
+.strategy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px}
+.strategy-card{background:var(--dark-card);border:1px solid var(--border);border-radius:18px;padding:32px;transition:border-color .2s,transform .2s;text-decoration:none;display:block}
+.strategy-card:hover{border-color:var(--volt);transform:translateY(-2px);opacity:1}
+.strategy-label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--volt);margin-bottom:12px}
+.strategy-card h3{font-family:var(--serif);font-size:22px;color:var(--white);margin-bottom:12px;letter-spacing:-.01em}
+.strategy-card p{color:var(--gray);font-size:15px;line-height:1.6}
+
+/* Updates Archive */
+.archive-list{margin-top:48px;max-height:420px;overflow-y:auto;border:1px solid var(--border);border-radius:18px;background:var(--dark-card)}
+.archive-list::-webkit-scrollbar{width:8px}
+.archive-list::-webkit-scrollbar-track{background:var(--dark-card)}
+.archive-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.archive-list::-webkit-scrollbar-thumb:hover{background:var(--dim)}
+.archive-item{padding:28px 32px;border-bottom:1px solid var(--border)}
+.archive-item:last-child{border-bottom:none}
+.archive-header{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:8px;flex-wrap:wrap}
+.archive-date{font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--dim)}
+.archive-title{font-family:var(--serif);font-size:18px;color:var(--white);margin-bottom:8px;letter-spacing:-.01em}
+.archive-summary{color:var(--gray);font-size:15px;line-height:1.6;margin-bottom:12px}
+.archive-tags{display:flex;gap:8px;flex-wrap:wrap}
+.archive-tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--volt);background:rgba(213,255,2,.08);padding:4px 10px;border-radius:100px}
+
+/* Footer */
+footer{border-top:1px solid var(--border);padding:48px 24px;margin-top:var(--section-pad);text-align:center}
+footer p{color:var(--dim);font-size:14px;line-height:1.8}
+.footer-logo{width:100px;height:auto;margin:0 auto 16px;filter:brightness(0) invert(1);opacity:.6}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root{--section-pad:64px}
+  section{padding:var(--section-pad) 0}
+  .hero{padding:80px 0 var(--section-pad)}
+  .auth-card{padding:36px 28px}
+  .auth-headline{font-size:32px}
+  .header-inner{flex-direction:column;align-items:flex-start;gap:16px}
+  .header-nav{order:3;width:100%}
+  .header-user{order:2;flex-wrap:wrap;gap:12px}
+  .strategy-grid{grid-template-columns:1fr}
+  .archive-list{max-height:none}
+  .latest-update{padding:28px 24px}
+}
+
+@media (max-width: 480px) {
+  body{font-size:16px}
+  .container,.container-wide{padding:0 20px}
+  .auth-card{padding:28px 20px}
+  .site-header{padding:14px 20px}
+  .header-logo{height:24px}
+  .header-title{font-size:18px}
+  .latest-update{padding:24px 20px}
+  .update-title{font-size:24px}
+  .strategy-card{padding:24px}
+  .archive-item{padding:20px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- Auth Gate -->
+<div id="authGate" class="auth-gate">
+  <div class="auth-card reveal">
+    <img src="https://designpickle.com/images/logo_brand.svg" alt="Design Pickle" class="auth-logo">
+    <div class="auth-eyebrow">Design Pickle Internal</div>
+    <h1 class="auth-headline">CEO Hub</h1>
+    <p class="auth-body">Private updates, strategy notes, and weekly context from Russ Perry for the Design Pickle team.</p>
+    
+    <form id="authForm" class="auth-form">
+      <label for="emailInput" class="auth-label">Work email</label>
+      <input 
+        type="email" 
+        id="emailInput" 
+        class="auth-input" 
+        placeholder="you@designpickle.com"
+        required
+        autocomplete="email"
+      >
+      <button type="submit" class="auth-btn">Send magic link</button>
+    </form>
+    
+    <p class="auth-helper">Use your @designpickle.com email. Exceptions must be manually whitelisted.</p>
+    
+    <div id="authMessage" role="status" aria-live="polite"></div>
+  </div>
+</div>
+
+<!-- App -->
+<div id="app" class="app">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <img src="https://designpickle.com/images/logo_brand.svg" alt="Design Pickle" class="header-logo">
+        <span class="header-title">CEO Hub</span>
+      </div>
+      <nav class="header-nav">
+        <a href="#latest">Latest</a>
+        <a href="#strategy">Strategy</a>
+        <a href="#archive">Archive</a>
+      </nav>
+      <div class="header-user">
+        <span class="user-pill"><span class="role" id="userRole">employee</span> · <span id="userEmail">user@designpickle.com</span></span>
+        <button id="signoutBtn" class="btn-signout">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="reveal">
+          <div class="hero-eyebrow">CEO Communications Home Base</div>
+          <h1>One place for the context behind the work.</h1>
+          <p class="hero-copy">Team — welcome to the CEO Hub. This is where I'll keep the signal clear: what I'm seeing, what we're changing, where we're going, and what matters most right now.</p>
+          <p class="hero-copy">Design Pickle is in a season that demands focus, speed, and honesty. My job is to make sure you have the context to make good decisions without waiting for another meeting. This page is part of that operating system.</p>
+          <p class="hero-copy">Check here for the latest weekly update, strategy docs, and the archive of what we've already said. If something feels unclear, that's a bug. We'll keep improving it.</p>
+          <p class="hero-signature">— Russ</p>
+          <p class="hero-meta">Private to Design Pickle · Updated weekly · Built for clarity</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Update -->
+    <section id="latest">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-eyebrow">Latest Update</div>
+          <div class="latest-update">
+            <div class="update-header">
+              <h2 class="update-title">Weekly Summary Placeholder — Chapter Three operating cadence</h2>
+              <p class="update-date">Draft placeholder · Replace before launch</p>
+            </div>
+            <div class="update-body">
+              <p>This block is reserved for the most recent CEO weekly summary. It should be written in plain English: what changed, what matters, what decisions were made, and what the team should do next.</p>
+            </div>
+            <ul class="update-bullets">
+              <li>What changed this week: [replace with 3–5 crisp bullets]</li>
+              <li>Where we need focus: [replace with the current operating priority]</li>
+              <li>What happens next: [replace with owner/date/action]</li>
+            </ul>
+            <a href="#" class="update-cta">Read the full update →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strategy Docs -->
+    <section id="strategy">
+      <div class="container-wide">
+        <div class="reveal">
+          <div class="section-eyebrow">Strategy Docs</div>
+          <h2 class="section-title">The docs behind the decisions.</h2>
+          <p class="section-intro">These are the source-of-truth strategy notes the team should understand before debating execution.</p>
+          <div class="strategy-grid">
+            <a href="#" class="strategy-card">
+              <div class="strategy-label">Company narrative</div>
+              <h3>Chapter Three Strategy</h3>
+              <p>The plain-English framing for where Design Pickle is going next and why the operating model is changing.</p>
+            </a>
+            <a href="#" class="strategy-card">
+              <div class="strategy-label">Operating model</div>
+              <h3>AI-First Builder Model</h3>
+              <p>How we work when every team member is expected to use AI to compress cycle time and ship more often.</p>
+            </a>
+            <a href="#" class="strategy-card">
+              <div class="strategy-label">Strategic lanes</div>
+              <h3>CHIPS / Jar / Legacy MRR</h3>
+              <p>The three-lane strategy: manage the core business, build Jar, and launch the CHIPS marketplace.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Updates Archive -->
+    <section id="archive">
+      <div class="container-wide">
+        <div class="reveal">
+          <div class="section-eyebrow">Archive</div>
+          <h2 class="section-title">Past updates stay visible.</h2>
+          <p class="section-intro">No archaeology in Slack. The running record lives here.</p>
+          <div class="archive-list">
+            <div class="archive-item">
+              <div class="archive-header">
+                <span class="archive-date">2026-05-03</span>
+              </div>
+              <h3 class="archive-title">CEO Weekly Update Placeholder</h3>
+              <p class="archive-summary">Replace with the latest weekly note once approved.</p>
+              <div class="archive-tags">
+                <span class="archive-tag">Weekly update</span>
+                <span class="archive-tag">Strategy</span>
+              </div>
+            </div>
+            <div class="archive-item">
+              <div class="archive-header">
+                <span class="archive-date">2026-04-26</span>
+              </div>
+              <h3 class="archive-title">Chapter Three Draft Placeholder</h3>
+              <p class="archive-summary">Placeholder for the restructuring narrative and operating model note.</p>
+              <div class="archive-tags">
+                <span class="archive-tag">Company narrative</span>
+                <span class="archive-tag">Operating model</span>
+              </div>
+            </div>
+            <div class="archive-item">
+              <div class="archive-header">
+                <span class="archive-date">2026-04-19</span>
+              </div>
+              <h3 class="archive-title">AI-First Team Placeholder</h3>
+              <p class="archive-summary">Placeholder for a note on how Design Pickle uses AI in daily work.</p>
+              <div class="archive-tags">
+                <span class="archive-tag">AI</span>
+                <span class="archive-tag">Execution</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FUTURE HOOK: Live ARR/team metrics dashboard mount point. Do not render at launch. -->
+    <!-- FUTURE HOOK: Data API integration adapter. Do not implement at launch. -->
+
+  </main>
+
+  <footer>
+    <img src="https://designpickle.com/images/logo_brand.svg" alt="Design Pickle" class="footer-logo">
+    <p>Design Pickle CEO Hub · Internal use only</p>
+    <p>Built as a static GitHub Pages site. Content maintained manually until CMS/API hooks are added.</p>
+  </footer>
+</div>
+
+<script>
+// Static GitHub Pages gate only. This hides casual access but is not a security boundary.
+// Do not put confidential data or secrets in this page.
+
+const ADMIN_EMAIL = 'russ@designpickle.com';
+const manualWhitelist = [
+  // Add non-domain exceptions here
+  // Example: 'advisor@example.com'
+];
+const SESSION_KEY = 'dpCeoHubSession';
+const SESSION_EXPIRY_DAYS = 30;
+
+// Email normalization and validation
+function normalizeEmail(value) {
+  return value.trim().toLowerCase();
+}
+
+function isValidEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+function getRole(email) {
+  if (email === ADMIN_EMAIL) return 'admin';
+  if (email.endsWith('@designpickle.com')) return 'employee';
+  if (manualWhitelist.includes(email)) return 'whitelisted';
+  return null;
+}
+
+// Session management
+function saveSession(email, role) {
+  const session = {
+    email,
+    role,
+    timestamp: Date.now()
+  };
+  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+}
+
+function getSession() {
+  const stored = localStorage.getItem(SESSION_KEY);
+  if (!stored) return null;
+  
+  try {
+    const session = JSON.parse(stored);
+    
+    // Check expiration (30 days)
+    const age = Date.now() - session.timestamp;
+    const maxAge = SESSION_EXPIRY_DAYS * 24 * 60 * 60 * 1000;
+    if (age > maxAge) {
+      clearSession();
+      return null;
+    }
+    
+    // Validate shape
+    if (session.email && session.role && session.timestamp) {
+      return session;
+    }
+  } catch (e) {
+    console.error('Invalid session data:', e);
+  }
+  
+  clearSession();
+  return null;
+}
+
+function clearSession() {
+  localStorage.removeItem(SESSION_KEY);
+}
+
+// UI state management
+function showAuthGate() {
+  document.getElementById('authGate').classList.remove('hidden');
+  document.getElementById('app').classList.remove('active');
+}
+
+function showApp(session) {
+  document.getElementById('authGate').classList.add('hidden');
+  document.getElementById('app').classList.add('active');
+  
+  // Update user display
+  document.getElementById('userRole').textContent = session.role;
+  document.getElementById('userEmail').textContent = session.email;
+  
+  // Trigger reveal animations
+  setTimeout(() => {
+    initRevealObserver();
+  }, 100);
+}
+
+function showMessage(type, text, includeButton = false) {
+  const messageEl = document.getElementById('authMessage');
+  messageEl.className = `auth-message ${type}`;
+  
+  let html = `<p>${text}</p>`;
+  if (includeButton) {
+    html += `<button id="magicLinkBtn" class="magic-link-btn">Open magic link</button>`;
+  }
+  
+  messageEl.innerHTML = html;
+  
+  if (includeButton) {
+    document.getElementById('magicLinkBtn').addEventListener('click', handleMagicLinkClick);
+  }
+}
+
+function clearMessage() {
+  document.getElementById('authMessage').innerHTML = '';
+}
+
+// Auth flow handlers
+let pendingAuth = null;
+
+function handleAuthSubmit(e) {
+  e.preventDefault();
+  clearMessage();
+  
+  const input = document.getElementById('emailInput');
+  const email = normalizeEmail(input.value);
+  
+  // Validation
+  if (!email) {
+    showMessage('error', 'Please enter your email address.');
+    return;
+  }
+  
+  if (!isValidEmail(email)) {
+    showMessage('error', 'Please enter a valid email address.');
+    return;
+  }
+  
+  // Check access
+  const role = getRole(email);
+  
+  if (!role) {
+    showMessage('blocked', 'This hub is limited to Design Pickle team members. If you need access, ask Pin or Russ to whitelist your email.');
+    return;
+  }
+  
+  // Store pending auth
+  pendingAuth = { email, role };
+  
+  // Show magic link confirmation
+  showMessage('success', 'Magic link ready. Since this is a static GitHub Pages prototype, click below to complete sign-in.', true);
+}
+
+function handleMagicLinkClick() {
+  if (!pendingAuth) return;
+  
+  saveSession(pendingAuth.email, pendingAuth.role);
+  showApp(pendingAuth);
+  pendingAuth = null;
+}
+
+function handleSignout() {
+  clearSession();
+  showAuthGate();
+  document.getElementById('emailInput').value = '';
+  clearMessage();
+}
+
+// Reveal animations
+function initRevealObserver() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    return;
+  }
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -80px 0px'
+  });
+  
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+  // Check for existing session
+  const session = getSession();
+  
+  if (session) {
+    showApp(session);
+  } else {
+    showAuthGate();
+  }
+  
+  // Bind event handlers
+  document.getElementById('authForm').addEventListener('submit', handleAuthSubmit);
+  document.getElementById('signoutBtn').addEventListener('click', handleSignout);
+});
+</script>
+
+</body>
+</html>
