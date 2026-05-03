@@ -12,17 +12,9 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --black:#0B0C0B;
-  --volt:#D5FF02;
-  --white:#F5F5F3;
-  --gray:#999;
-  --dim:#555;
-  --dark-card:#141514;
-  --dark-card-2:#111211;
-  --border:#1E1F1E;
-  --border-light:#252625;
-  --serif:'Instrument Serif',Georgia,serif;
-  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --black:#0B0C0B;--volt:#D5FF02;--white:#F5F5F3;--gray:#999;--dim:#555;
+  --dark-card:#141514;--dark-card-2:#111211;--border:#1E1F1E;--border-light:#252625;
+  --serif:'Instrument Serif',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;min-height:100vh}
@@ -31,6 +23,7 @@ a{color:var(--volt);text-decoration:none;transition:opacity .2s}
 a:hover{opacity:.7}
 img{max-width:100%;display:block}
 button{cursor:pointer;font-family:var(--sans)}
+textarea,input{font-family:var(--sans)}
 
 /* ─── AUTH GATE ─── */
 #authGate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:var(--black)}
@@ -45,159 +38,178 @@ button{cursor:pointer;font-family:var(--sans)}
 .auth-input::placeholder{color:var(--dim)}
 .auth-btn{width:100%;font-family:var(--sans);font-size:15px;font-weight:600;background:var(--volt);color:var(--black);padding:15px 32px;border-radius:100px;border:none;transition:transform .2s,box-shadow .2s}
 .auth-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(213,255,2,.28)}
+.auth-btn:disabled{opacity:.5;transform:none;cursor:not-allowed}
 .auth-helper{color:var(--dim);font-size:13px;margin-top:16px;line-height:1.5}
 .auth-msg{margin-top:16px;padding:12px 16px;border-radius:10px;font-size:14px;line-height:1.5;display:none}
 .auth-msg.error{background:rgba(255,60,60,.1);border:1px solid rgba(255,60,60,.2);color:#ff6b6b;display:block}
 .auth-msg.blocked{background:rgba(255,140,0,.08);border:1px solid rgba(255,140,0,.15);color:#ffaa44;display:block}
 .auth-msg.success{background:rgba(213,255,2,.08);border:1px solid rgba(213,255,2,.2);color:var(--volt);display:block}
-.magic-confirm-btn{margin-top:12px;background:var(--volt);color:var(--black);border:none;padding:11px 24px;border-radius:100px;font-size:14px;font-weight:600;width:100%}
 
 /* ─── APP SHELL ─── */
 #app{display:none;min-height:100vh;flex-direction:column}
 #app.visible{display:flex}
 
 /* ─── HEADER ─── */
-.site-header{position:sticky;top:0;z-index:100;background:rgba(11,12,11,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
-.header-left{display:flex;align-items:center;gap:16px}
-.header-logo{height:22px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(11,12,11,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.header-left{display:flex;align-items:center;gap:14px}
+.header-logo{height:22px;filter:brightness(0) invert(1);opacity:.9}
 .header-divider{width:1px;height:20px;background:var(--border)}
 .header-title{font-size:13px;font-weight:500;color:var(--gray);letter-spacing:.02em}
-.header-right{display:flex;align-items:center;gap:16px}
-.header-user{font-size:13px;color:var(--dim)}
+.header-right{display:flex;align-items:center;gap:14px}
+.header-user{font-size:12px;color:var(--dim)}
 .header-user span{color:var(--gray)}
 .signout-btn{font-size:12px;font-weight:500;color:var(--dim);background:none;border:1px solid var(--border);padding:5px 12px;border-radius:100px;transition:border-color .2s,color .2s}
 .signout-btn:hover{border-color:var(--gray);color:var(--white)}
-.last-updated{font-size:11px;color:var(--dim);letter-spacing:.04em}
+.admin-badge{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--black);background:var(--volt);padding:3px 8px;border-radius:100px}
 
-/* ─── MAIN GRID ─── */
-.dashboard{padding:24px;max-width:1440px;margin:0 auto;width:100%}
+/* ─── DASHBOARD ─── */
+.dashboard{padding:20px 24px;max-width:1400px;margin:0 auto;width:100%}
 
 /* CEO Banner */
-.ceo-banner{background:linear-gradient(135deg,var(--dark-card) 0%,rgba(213,255,2,.04) 100%);border:1px solid var(--border);border-radius:16px;padding:28px 32px;margin-bottom:20px;display:flex;align-items:center;gap:32px}
-.ceo-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--volt),#a8cc00);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:22px;color:var(--black);font-weight:400;flex-shrink:0}
-.ceo-banner-text{}
-.ceo-banner-label{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
-.ceo-banner-headline{font-family:var(--serif);font-size:22px;color:var(--white);line-height:1.2;letter-spacing:-.01em}
-.ceo-banner-sub{font-size:13px;color:var(--gray);margin-top:4px}
-.ceo-banner-date{margin-left:auto;text-align:right;flex-shrink:0}
+.ceo-banner{background:linear-gradient(135deg,var(--dark-card) 0%,rgba(213,255,2,.03) 100%);border:1px solid var(--border);border-radius:16px;padding:24px 28px;margin-bottom:16px;display:flex;align-items:center;gap:24px}
+.ceo-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--volt),#a8cc00);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:20px;color:var(--black);flex-shrink:0}
+.ceo-banner-label{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:3px}
+.ceo-banner-headline{font-family:var(--serif);font-size:20px;color:var(--white);line-height:1.2;letter-spacing:-.01em}
+.ceo-banner-sub{font-size:13px;color:var(--gray);margin-top:3px}
+.ceo-banner-right{margin-left:auto;text-align:right;flex-shrink:0;display:flex;align-items:center;gap:16px}
 .ceo-banner-week{font-size:22px;font-weight:600;color:var(--white);letter-spacing:-.02em}
-.ceo-banner-week-label{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+.ceo-banner-week-label{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;margin-top:1px}
+.pulse{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--volt);font-weight:600}
+.pulse::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--volt);animation:pa 2s infinite}
+@keyframes pa{0%,100%{opacity:1}50%{opacity:.3}}
 
-/* Grid layout */
-.grid-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}
-.grid-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+/* Grid */
 .grid-main-side{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px}
-.grid-side-main{display:grid;grid-template-columns:1fr 2fr;gap:16px;margin-bottom:16px}
+.grid-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px}
 
-/* ─── CARDS ─── */
-.card{background:var(--dark-card);border:1px solid var(--border);border-radius:16px;padding:24px;position:relative;overflow:hidden}
-.card-sm{padding:20px}
-.card-label{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;display:flex;align-items:center;gap:6px}
-.card-label .dot{width:6px;height:6px;border-radius:50%;background:var(--volt);flex-shrink:0}
-.card-label .dot.orange{background:#ff9500}
-.card-label .dot.blue{background:#4a9eff}
-.card-label .dot.gray{background:var(--dim)}
-.card-title{font-family:var(--serif);font-size:20px;color:var(--white);letter-spacing:-.01em;line-height:1.25;margin-bottom:8px}
-.card-body{font-size:14px;color:var(--gray);line-height:1.65}
-.card-accent{position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle at top right,rgba(213,255,2,.05) 0%,transparent 70%);pointer-events:none}
+/* Cards */
+.card{background:var(--dark-card);border:1px solid var(--border);border-radius:16px;padding:22px;position:relative;overflow:hidden}
+.card-sm{padding:18px}
+.card-accent{position:absolute;top:0;right:0;width:100px;height:100px;background:radial-gradient(circle at top right,rgba(213,255,2,.05) 0%,transparent 70%);pointer-events:none}
+.card-label{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.card-label-left{display:flex;align-items:center;gap:6px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--volt);flex-shrink:0}
+.dot.orange{background:#ff9500}
+.dot.blue{background:#4a9eff}
+.dot.gray{background:var(--dim)}
+.dot.red{background:#ff6b6b}
 
-/* Latest from CEO */
-.ceo-post-meta{font-size:12px;color:var(--dim);margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.ceo-post-meta .tag{background:rgba(213,255,2,.1);color:var(--volt);border:1px solid rgba(213,255,2,.2);border-radius:100px;padding:2px 10px;font-size:11px;font-weight:600;letter-spacing:.06em}
-.ceo-post-title{font-family:var(--serif);font-size:26px;line-height:1.2;letter-spacing:-.02em;color:var(--white);margin-bottom:12px}
-.ceo-post-body{font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:20px}
-.ceo-post-body p+p{margin-top:10px}
-.read-more{font-size:13px;font-weight:600;color:var(--volt);display:inline-flex;align-items:center;gap:6px}
-.read-more::after{content:"→"}
+/* CEO Post */
+.ceo-post-meta{font-size:12px;color:var(--dim);margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tag{background:rgba(213,255,2,.1);color:var(--volt);border:1px solid rgba(213,255,2,.2);border-radius:100px;padding:2px 10px;font-size:11px;font-weight:600;letter-spacing:.05em}
+.ceo-post-title{font-family:var(--serif);font-size:24px;line-height:1.2;letter-spacing:-.02em;color:var(--white);margin-bottom:10px}
+.ceo-post-body{font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:16px}
+.ceo-post-body p+p{margin-top:8px}
 
-/* Outcomes – Week / Month */
-.outcome-tabs{display:flex;gap:4px;margin-bottom:20px;background:var(--black);border-radius:10px;padding:4px}
-.outcome-tab{flex:1;text-align:center;padding:7px 12px;border-radius:7px;font-size:12px;font-weight:600;color:var(--dim);background:none;border:none;transition:all .2s;letter-spacing:.04em;text-transform:uppercase}
+/* Admin edit */
+.edit-btn{font-size:11px;font-weight:600;color:var(--dim);background:none;border:1px solid var(--border);padding:4px 10px;border-radius:100px;transition:all .2s;display:none}
+.edit-btn:hover{border-color:var(--volt);color:var(--volt)}
+.is-admin .edit-btn{display:inline-flex;align-items:center;gap:4px}
+.edit-form{display:none;margin-top:16px;border-top:1px solid var(--border);padding-top:16px}
+.edit-form.open{display:block}
+.edit-input{width:100%;background:var(--black);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--white);font-size:14px;margin-bottom:8px;transition:border-color .2s}
+.edit-input:focus{outline:none;border-color:var(--volt)}
+.edit-textarea{width:100%;background:var(--black);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--white);font-size:14px;margin-bottom:8px;resize:vertical;min-height:90px;line-height:1.6;transition:border-color .2s}
+.edit-textarea:focus{outline:none;border-color:var(--volt)}
+.edit-actions{display:flex;gap:8px}
+.save-btn{font-size:13px;font-weight:600;background:var(--volt);color:var(--black);border:none;padding:8px 18px;border-radius:100px}
+.cancel-btn{font-size:13px;font-weight:500;background:none;border:1px solid var(--border);color:var(--gray);padding:8px 18px;border-radius:100px}
+.edit-note{font-size:11px;color:var(--dim);margin-top:8px;line-height:1.5}
+
+/* Outcomes */
+.outcome-tabs{display:flex;gap:4px;margin-bottom:16px;background:var(--black);border-radius:10px;padding:3px}
+.outcome-tab{flex:1;text-align:center;padding:6px;border-radius:7px;font-size:11px;font-weight:600;color:var(--dim);background:none;border:none;transition:all .2s;letter-spacing:.06em;text-transform:uppercase}
 .outcome-tab.active{background:var(--dark-card-2);color:var(--white);border:1px solid var(--border)}
 .outcome-list{list-style:none}
-.outcome-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+.outcome-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
 .outcome-item:last-child{border-bottom:none}
-.outcome-check{width:18px;height:18px;border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px;font-size:10px}
+.outcome-check{width:18px;height:18px;border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;font-size:9px;font-weight:700}
 .outcome-check.done{background:rgba(213,255,2,.12);border:1px solid rgba(213,255,2,.25);color:var(--volt)}
 .outcome-check.progress{background:rgba(74,158,255,.1);border:1px solid rgba(74,158,255,.2);color:#4a9eff}
-.outcome-check.pending{background:rgba(255,255,255,.04);border:1px solid var(--border);color:transparent}
+.outcome-check.pending{background:rgba(255,255,255,.03);border:1px solid var(--border)}
 .outcome-text{font-size:13px;color:var(--gray);line-height:1.5;flex:1}
 .outcome-text strong{color:var(--white);font-weight:500}
 .outcome-pane{display:none}
 .outcome-pane.active{display:block}
+.add-outcome-btn{width:100%;margin-top:10px;font-size:12px;font-weight:600;color:var(--dim);background:none;border:1px dashed var(--border);border-radius:8px;padding:7px;transition:all .2s;display:none}
+.is-admin .add-outcome-btn{display:block}
+.add-outcome-btn:hover{border-color:var(--volt);color:var(--volt)}
 
 /* Strategy Docs */
-.doc-list{display:flex;flex-direction:column;gap:8px}
-.doc-item{display:flex;align-items:center;gap:12px;padding:11px 14px;background:var(--black);border:1px solid var(--border);border-radius:10px;transition:border-color .2s}
-.doc-item:hover{border-color:var(--border-light)}
-.doc-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.doc-list{display:flex;flex-direction:column;gap:7px}
+.doc-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--black);border:1px solid var(--border);border-radius:10px;transition:border-color .2s;color:var(--white)}
+.doc-item:hover{border-color:var(--border-light);color:var(--white)}
+.doc-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
 .doc-icon.green{background:rgba(213,255,2,.1)}
 .doc-icon.blue{background:rgba(74,158,255,.1)}
 .doc-icon.orange{background:rgba(255,149,0,.1)}
 .doc-icon.purple{background:rgba(175,82,222,.1)}
 .doc-meta{flex:1;min-width:0}
-.doc-name{font-size:13px;font-weight:500;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .doc-date{font-size:11px;color:var(--dim);margin-top:1px}
-.doc-arrow{color:var(--dim);font-size:14px;flex-shrink:0}
+.doc-arrow{color:var(--dim);font-size:13px;flex-shrink:0}
 
 /* Working With Russ */
-.russ-guide-list{display:flex;flex-direction:column;gap:8px}
-.russ-guide-item{padding:12px 14px;background:var(--black);border:1px solid var(--border);border-radius:10px}
-.russ-guide-header{display:flex;align-items:center;gap:8px;margin-bottom:4px}
-.russ-guide-emoji{font-size:14px}
+.russ-guide-list{display:flex;flex-direction:column;gap:7px}
+.russ-guide-item{padding:11px 13px;background:var(--black);border:1px solid var(--border);border-radius:10px}
+.russ-guide-header{display:flex;align-items:center;gap:7px;margin-bottom:3px}
+.russ-guide-emoji{font-size:13px}
 .russ-guide-title{font-size:13px;font-weight:500;color:var(--white)}
-.russ-guide-desc{font-size:12px;color:var(--gray);line-height:1.5;padding-left:22px}
+.russ-guide-desc{font-size:12px;color:var(--gray);line-height:1.5;padding-left:20px}
 
 /* Reading / Watching */
-.media-list{display:flex;flex-direction:column;gap:8px}
-.media-item{display:flex;gap:12px;padding:11px 14px;background:var(--black);border:1px solid var(--border);border-radius:10px;align-items:flex-start;transition:border-color .2s}
+.media-list{display:flex;flex-direction:column;gap:7px}
+.media-item{display:flex;gap:10px;padding:10px 12px;background:var(--black);border:1px solid var(--border);border-radius:10px;align-items:flex-start;transition:border-color .2s;color:var(--white)}
 .media-item:hover{border-color:var(--border-light)}
-.media-type{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:100px;flex-shrink:0;margin-top:1px}
+.media-type{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:100px;flex-shrink:0;margin-top:2px;white-space:nowrap}
 .media-type.read{background:rgba(74,158,255,.1);color:#4a9eff;border:1px solid rgba(74,158,255,.2)}
 .media-type.watch{background:rgba(255,60,60,.1);color:#ff6b6b;border:1px solid rgba(255,60,60,.2)}
 .media-type.listen{background:rgba(175,82,222,.1);color:#bf7ff5;border:1px solid rgba(175,82,222,.2)}
 .media-meta{flex:1;min-width:0}
-.media-title{font-size:13px;font-weight:500;color:var(--white);line-height:1.4}
+.media-title{font-size:13px;font-weight:500;line-height:1.4;color:var(--white)}
 .media-source{font-size:11px;color:var(--dim);margin-top:2px}
 
-/* Purpose / Mission */
-.purpose-block{background:linear-gradient(135deg,rgba(213,255,2,.04) 0%,rgba(213,255,2,.01) 100%);border:1px solid rgba(213,255,2,.12);border-radius:16px;padding:28px 32px;text-align:center;margin-bottom:16px}
-.purpose-eyebrow{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(213,255,2,.5);margin-bottom:10px}
-.purpose-text{font-family:var(--serif);font-size:clamp(20px,2.2vw,26px);color:var(--white);line-height:1.3;letter-spacing:-.02em;max-width:700px;margin:0 auto}
+/* Mission / Purpose */
+.purpose-block{background:linear-gradient(135deg,rgba(213,255,2,.04) 0%,rgba(213,255,2,.01) 100%);border:1px solid rgba(213,255,2,.12);border-radius:16px;padding:24px 28px;margin-bottom:16px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.purpose-half{}
+.purpose-eyebrow{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(213,255,2,.5);margin-bottom:8px}
+.purpose-text{font-family:var(--serif);font-size:clamp(17px,1.8vw,22px);color:var(--white);line-height:1.35;letter-spacing:-.01em}
 .purpose-text em{color:var(--volt);font-style:italic}
+.purpose-divider{width:1px;height:100%;background:rgba(213,255,2,.1);display:none}
+.mission-stats{display:flex;flex-direction:column;gap:8px}
+.mission-stat{display:flex;align-items:baseline;gap:8px}
+.mission-stat-val{font-family:var(--serif);font-size:28px;color:var(--volt);letter-spacing:-.02em;line-height:1}
+.mission-stat-label{font-size:12px;color:var(--gray);line-height:1.4}
 
-/* Mission (footer) */
-.mission-footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;margin-top:8px}
-.mission-label{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
-.mission-text{font-family:var(--serif);font-size:18px;color:var(--gray);letter-spacing:-.01em}
-.mission-text strong{color:var(--white)}
-.footer-logo{height:20px;width:auto;margin:20px auto 0;filter:brightness(0) invert(1);opacity:.25}
+/* Archive */
+.archive-list{display:flex;flex-direction:column;gap:8px}
+.archive-item{padding:13px 16px;background:var(--black);border:1px solid var(--border);border-radius:10px}
+.archive-item-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;gap:12px}
+.archive-item-title{font-size:13px;font-weight:500;color:var(--white);flex:1}
+.archive-item-date{font-size:11px;color:var(--dim);flex-shrink:0}
+.archive-item-body{font-size:13px;color:var(--gray);line-height:1.5}
 
-/* Stat pills */
-.stat-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.stat-pill{background:var(--black);border:1px solid var(--border);border-radius:100px;padding:6px 14px;font-size:12px;color:var(--gray);display:flex;align-items:center;gap:6px}
-.stat-pill .val{color:var(--white);font-weight:600}
-.stat-pill .trend-up{color:#4ade80;font-size:10px}
-.stat-pill .trend-down{color:#f87171;font-size:10px}
-
-/* Pulse indicator */
-.pulse{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--volt);font-weight:500}
-.pulse::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--volt);animation:pulse-anim 2s infinite}
-@keyframes pulse-anim{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+/* Mission footer */
+.mission-footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;margin-top:8px}
+.mission-footer-label{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.mission-footer-text{font-family:var(--serif);font-size:15px;color:var(--gray);letter-spacing:-.01em;line-height:1.5;max-width:680px;margin:0 auto}
+.mission-footer-text strong{color:var(--white)}
+.footer-logo{height:18px;margin:18px auto 0;filter:brightness(0) invert(1);opacity:.2}
+.footer-sub{font-size:11px;color:var(--dim);margin-top:10px;letter-spacing:.03em}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:1100px){
   .grid-3col{grid-template-columns:1fr 1fr}
-  .grid-main-side,.grid-side-main{grid-template-columns:1fr}
+  .grid-main-side{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-  .dashboard{padding:16px}
-  .grid-3col,.grid-2col{grid-template-columns:1fr}
-  .ceo-banner{flex-direction:column;align-items:flex-start;gap:16px}
-  .ceo-banner-date{margin-left:0}
+  .dashboard{padding:12px 16px}
+  .grid-3col{grid-template-columns:1fr}
+  .purpose-block{grid-template-columns:1fr}
+  .ceo-banner{flex-direction:column;align-items:flex-start;gap:12px}
+  .ceo-banner-right{margin-left:0}
   .site-header{padding:0 16px}
-  .header-title{display:none}
-  .last-updated{display:none}
+  .header-title,.header-user{display:none}
 }
 </style>
 </head>
@@ -209,21 +221,18 @@ button{cursor:pointer;font-family:var(--sans)}
     <img src="https://designpickle.com/images/logo_brand.svg" alt="Design Pickle" class="auth-logo">
     <div class="auth-eyebrow">Design Pickle · Internal</div>
     <h1 class="auth-headline">CEO Hub</h1>
-    <p class="auth-body">Private updates and strategy from Russ Perry for the Design Pickle team.</p>
+    <p class="auth-body">Enter your work email and we'll send you a magic link — no password needed.</p>
     <form id="authForm">
       <input type="email" id="emailInput" class="auth-input" placeholder="you@designpickle.com" required autocomplete="email">
-      <button type="submit" class="auth-btn">Access Hub →</button>
+      <button type="submit" id="authSubmitBtn" class="auth-btn">Send magic link →</button>
     </form>
     <p class="auth-helper">@designpickle.com only. Other access must be whitelisted by Russ.</p>
     <div id="authMsg" class="auth-msg"></div>
-    <button id="magicConfirmBtn" class="magic-confirm-btn" style="display:none">✓ I'm in — Enter the Hub</button>
   </div>
 </div>
 
 <!-- ─── APP ─── -->
 <div id="app">
-
-  <!-- Header -->
   <header class="site-header">
     <div class="header-left">
       <img src="https://designpickle.com/images/logo_brand.svg" alt="Design Pickle" class="header-logo">
@@ -231,271 +240,247 @@ button{cursor:pointer;font-family:var(--sans)}
       <span class="header-title">CEO Hub</span>
     </div>
     <div class="header-right">
-      <span class="last-updated" id="lastUpdated"></span>
+      <span id="adminBadge" class="admin-badge" style="display:none">Admin</span>
       <span class="header-user">Signed in as <span id="headerEmail"></span></span>
       <button class="signout-btn" id="signoutBtn">Sign out</button>
     </div>
   </header>
 
-  <!-- Dashboard -->
   <main class="dashboard">
 
-    <!-- CEO Banner -->
+    <!-- Banner -->
     <div class="ceo-banner">
       <div class="ceo-avatar">R</div>
-      <div class="ceo-banner-text">
+      <div>
         <div class="ceo-banner-label">From the desk of</div>
         <div class="ceo-banner-headline">Russ Perry, CEO & Co-Founder</div>
-        <div class="ceo-banner-sub">This is your direct line to what I'm thinking, where we're going, and why it matters.</div>
+        <div class="ceo-banner-sub">Your direct line to strategy, priorities, and what's on my mind.</div>
       </div>
-      <div class="ceo-banner-date">
-        <div class="ceo-banner-week" id="currentWeek"></div>
-        <div class="ceo-banner-week-label">Current Week</div>
+      <div class="ceo-banner-right">
+        <div>
+          <div class="ceo-banner-week" id="currentWeek"></div>
+          <div class="ceo-banner-week-label">Current Week</div>
+        </div>
+        <span class="pulse">Live</span>
       </div>
     </div>
 
-    <!-- Row 1: Latest from CEO (wide) + Outcomes -->
+    <!-- Row 1: Latest CEO post + Outcomes -->
     <div class="grid-main-side">
 
       <!-- Latest From CEO -->
       <div class="card">
         <div class="card-accent"></div>
-        <div class="card-label"><span class="dot"></span> Latest From the CEO</div>
+        <div class="card-label">
+          <div class="card-label-left"><span class="dot"></span> Latest From the CEO</div>
+          <button class="edit-btn" onclick="toggleEdit('post')">✏ Edit</button>
+        </div>
         <div class="ceo-post-meta">
-          <span class="tag">Week of May 5</span>
-          <span>2 min read</span>
-          <span class="pulse">Live</span>
+          <span class="tag" id="postTag">Week of May 5</span>
+          <span id="postReadTime">2 min read</span>
         </div>
-        <div class="ceo-post-title">Chapter Three is Here — Here's What That Actually Means</div>
-        <div class="ceo-post-body">
+        <div class="ceo-post-title" id="postTitle">Chapter Three is Here — Here's What That Actually Means</div>
+        <div class="ceo-post-body" id="postBody">
           <p>We're in wartime. I don't say that to be dramatic — I say it because clarity is a gift right now. Every dollar, every hire, every meeting needs to move us toward one of three lanes: Legacy MRR, Jar, or CHIPS.</p>
-          <p>This week I'm focused on closing the cost restructuring plan with Niket and getting the Chapter Three letter in front of all of you. You deserve to hear it directly. More coming Thursday.</p>
+          <p>This week I'm focused on closing the cost restructuring plan with Niket and getting the Chapter Three letter in front of all of you. You deserve to hear it directly from me. More coming Thursday.</p>
         </div>
-        <a href="#archive" class="read-more">View all updates</a>
-        <!-- FUTURE HOOK: Replace static content above with CMS API fetch -->
+        <!-- Admin editor -->
+        <div class="edit-form" id="edit-post">
+          <input class="edit-input" id="editPostTag" placeholder="Week label (e.g. Week of May 5)" />
+          <input class="edit-input" id="editPostTitle" placeholder="Post title" />
+          <textarea class="edit-textarea" id="editPostBody" placeholder="Post body (separate paragraphs with a blank line)" rows="5"></textarea>
+          <div class="edit-actions">
+            <button class="save-btn" onclick="savePost()">Save</button>
+            <button class="cancel-btn" onclick="toggleEdit('post')">Cancel</button>
+          </div>
+          <p class="edit-note">Saved content persists for all signed-in users via their local session. Pin can also update directly in the HTML and push to publish globally.</p>
+        </div>
+        <!-- FUTURE HOOK: Replace static content with CMS API fetch -->
       </div>
 
       <!-- Rolling Outcomes -->
       <div class="card">
-        <div class="card-label"><span class="dot orange"></span> Rolling Outcomes</div>
+        <div class="card-label">
+          <div class="card-label-left"><span class="dot orange"></span> Rolling Outcomes</div>
+          <button class="edit-btn" onclick="toggleEdit('outcomes')">✏ Edit</button>
+        </div>
         <div class="outcome-tabs">
-          <button class="outcome-tab active" onclick="switchOutcomes('week', this)">This Week</button>
-          <button class="outcome-tab" onclick="switchOutcomes('month', this)">This Month</button>
+          <button class="outcome-tab active" onclick="switchOutcomes('week',this)">This Week</button>
+          <button class="outcome-tab" onclick="switchOutcomes('month',this)">This Month</button>
         </div>
         <div id="outcomeWeek" class="outcome-pane active">
-          <ul class="outcome-list">
-            <li class="outcome-item">
-              <span class="outcome-check progress">→</span>
-              <span class="outcome-text"><strong>Cost plan finalized</strong> with Niket — 300k/month target</span>
-            </li>
-            <li class="outcome-item">
-              <span class="outcome-check done">✓</span>
-              <span class="outcome-text"><strong>AI CoS Course live</strong> — 4 enrolled, $6K revenue</span>
-            </li>
-            <li class="outcome-item">
-              <span class="outcome-check pending"> </span>
-              <span class="outcome-text"><strong>Chapter Three letter</strong> sent to full team</span>
-            </li>
-            <li class="outcome-item">
-              <span class="outcome-check pending"> </span>
-              <span class="outcome-text"><strong>CHIPS sprint plan</strong> confirmed with Arnoe</span>
-            </li>
-            <li class="outcome-item">
-              <span class="outcome-check done">✓</span>
-              <span class="outcome-text"><strong>CEO Hub launched</strong> for internal team</span>
-            </li>
+          <ul class="outcome-list" id="weekList">
+            <li class="outcome-item"><span class="outcome-check progress">→</span><span class="outcome-text"><strong>Cost plan finalized</strong> with Niket — 300k/month target</span></li>
+            <li class="outcome-item"><span class="outcome-check done">✓</span><span class="outcome-text"><strong>AI CoS Course live</strong> — 4 enrolled, $6K revenue</span></li>
+            <li class="outcome-item"><span class="outcome-check pending"></span><span class="outcome-text"><strong>Chapter Three letter</strong> sent to full team</span></li>
+            <li class="outcome-item"><span class="outcome-check pending"></span><span class="outcome-text"><strong>CHIPS sprint plan</strong> confirmed with Arnoe</span></li>
+            <li class="outcome-item"><span class="outcome-check done">✓</span><span class="outcome-text"><strong>CEO Hub launched</strong> for Design Pickle team</span></li>
           </ul>
+          <button class="add-outcome-btn" onclick="addOutcome('week')">+ Add outcome</button>
         </div>
         <div id="outcomeMonth" class="outcome-pane">
-          <ul class="outcome-list">
-            <li class="outcome-item">
-              <span class="outcome-check progress">→</span>
-              <span class="outcome-text"><strong>300k/month cost savings</strong> executed</span>
-            </li>
-            <li class="outcome-item">
-              <span class="outcome-check progress">→</span>
-              <span class="outcome-text"><strong>CHIPS team formed</strong> + 3-week sprint underway</span>
-            </li>
-            <li class="outcome-item">
-              <span class="outcome-check done">✓</span>
-              <span class="outcome-text"><strong>AI for Operators course</strong> live with paying students</span>
-            </li>
-            <li class="outcome-item">
-              <span class="outcome-check pending"> </span>
-              <span class="outcome-text"><strong>Canva GTM plan</strong> activated post-Create</span>
-            </li>
-            <li class="outcome-item">
-              <span class="outcome-check pending"> </span>
-              <span class="outcome-text"><strong>Board letter</strong> sent + acknowledged</span>
-            </li>
+          <ul class="outcome-list" id="monthList">
+            <li class="outcome-item"><span class="outcome-check progress">→</span><span class="outcome-text"><strong>300k/month savings</strong> executed & tracked</span></li>
+            <li class="outcome-item"><span class="outcome-check progress">→</span><span class="outcome-text"><strong>CHIPS team formed</strong> + 3-week sprint underway</span></li>
+            <li class="outcome-item"><span class="outcome-check done">✓</span><span class="outcome-text"><strong>AI for Operators</strong> live with paying students</span></li>
+            <li class="outcome-item"><span class="outcome-check pending"></span><span class="outcome-text"><strong>Canva GTM plan</strong> activated post-Create</span></li>
+            <li class="outcome-item"><span class="outcome-check pending"></span><span class="outcome-text"><strong>Board & team letters</strong> sent and acknowledged</span></li>
           </ul>
+          <button class="add-outcome-btn" onclick="addOutcome('month')">+ Add outcome</button>
         </div>
-        <!-- FUTURE HOOK: Pull outcome data from GitHub Issues API with label 'outcome' -->
+        <div class="edit-form" id="edit-outcomes">
+          <p style="font-size:13px;color:var(--gray);margin-bottom:12px">Edit outcomes directly in each list above, or push an updated index.html to apply changes globally to all users.</p>
+          <div class="edit-actions">
+            <button class="cancel-btn" onclick="toggleEdit('outcomes')">Close</button>
+          </div>
+        </div>
+        <!-- FUTURE HOOK: Pull from GitHub Issues API with label 'outcome' + milestone -->
       </div>
 
     </div>
 
-    <!-- Row 2: Strategy Docs + Working With Russ + Reading/Watching -->
+    <!-- Row 2: Strategy + Working With Russ + Reading/Watching -->
     <div class="grid-3col">
 
-      <!-- Strategy & Guidance Docs -->
+      <!-- Strategy Docs -->
       <div class="card card-sm">
-        <div class="card-label"><span class="dot blue"></span> Strategy & Guidance</div>
+        <div class="card-label"><div class="card-label-left"><span class="dot blue"></span> Strategy & Guidance</div></div>
         <div class="doc-list">
-          <a href="#" class="doc-item">
+          <a href="https://docs.google.com/document/d/18ByGqJ_ASSp2GDXOU0D-kwVakXU5gJ8A8mj0dhqmATU/edit?tab=t.0" target="_blank" class="doc-item">
             <div class="doc-icon green">📋</div>
-            <div class="doc-meta">
-              <div class="doc-name">Chapter Three — Operating Model</div>
-              <div class="doc-date">Updated May 3, 2026</div>
-            </div>
+            <div class="doc-meta"><div class="doc-name">Chapter Three — Operating Model</div><div class="doc-date">Updated May 2026</div></div>
             <span class="doc-arrow">↗</span>
           </a>
-          <a href="#" class="doc-item">
+          <a href="#" target="_blank" class="doc-item">
             <div class="doc-icon blue">🎯</div>
-            <div class="doc-meta">
-              <div class="doc-name">CHIPS Launch Strategy</div>
-              <div class="doc-date">June 2026 target</div>
-            </div>
+            <div class="doc-meta"><div class="doc-name">CHIPS Launch Strategy</div><div class="doc-date">June 2026 target</div></div>
             <span class="doc-arrow">↗</span>
           </a>
-          <a href="#" class="doc-item">
-            <div class="doc-icon orange">💡</div>
-            <div class="doc-meta">
-              <div class="doc-name">Canva Strategic Partnership</div>
-              <div class="doc-date">Active</div>
-            </div>
+          <a href="#" target="_blank" class="doc-item">
+            <div class="doc-icon orange">🤝</div>
+            <div class="doc-meta"><div class="doc-name">Canva Strategic Partnership</div><div class="doc-date">Active</div></div>
             <span class="doc-arrow">↗</span>
           </a>
-          <a href="#" class="doc-item">
+          <a href="#" target="_blank" class="doc-item">
             <div class="doc-icon purple">🏗️</div>
-            <div class="doc-meta">
-              <div class="doc-name">Jar SaaS Roadmap</div>
-              <div class="doc-date">Q2–Q3 2026</div>
-            </div>
+            <div class="doc-meta"><div class="doc-name">Jar SaaS Roadmap</div><div class="doc-date">Q2–Q3 2026</div></div>
             <span class="doc-arrow">↗</span>
           </a>
-          <a href="#" class="doc-item">
-            <div class="doc-icon green">📊</div>
-            <div class="doc-meta">
-              <div class="doc-name">Cost Optimization Plan</div>
-              <div class="doc-date">In progress</div>
-            </div>
+          <a href="#" target="_blank" class="doc-item">
+            <div class="doc-icon green">💰</div>
+            <div class="doc-meta"><div class="doc-name">Cost Optimization Plan</div><div class="doc-date">In progress</div></div>
             <span class="doc-arrow">↗</span>
           </a>
         </div>
-        <!-- FUTURE HOOK: Fetch doc list from GitHub API (ops-os /business/plans/) -->
       </div>
 
-      <!-- Unofficial Guide to Working With Russ -->
+      <!-- Working With Russ -->
       <div class="card card-sm">
-        <div class="card-label"><span class="dot"></span> Working With Russ</div>
+        <div class="card-label">
+          <div class="card-label-left"><span class="dot"></span> Working With Russ</div>
+          <a href="https://docs.google.com/document/d/18ByGqJ_ASSp2GDXOU0D-kwVakXU5gJ8A8mj0dhqmATU/edit?tab=t.03" target="_blank" style="font-size:10px;color:var(--volt);font-weight:600;white-space:nowrap">Full Guide ↗</a>
+        </div>
         <div class="russ-guide-list">
           <div class="russ-guide-item">
-            <div class="russ-guide-header">
-              <span class="russ-guide-emoji">⚡</span>
-              <span class="russ-guide-title">Move fast, communicate faster</span>
-            </div>
-            <div class="russ-guide-desc">I'd rather hear a wrong answer quickly than wait for a perfect one. Send the draft.</div>
+            <div class="russ-guide-header"><span class="russ-guide-emoji">⚡</span><span class="russ-guide-title">Move fast, communicate faster</span></div>
+            <div class="russ-guide-desc">Wrong and fast > right and late. Send the draft.</div>
           </div>
           <div class="russ-guide-item">
-            <div class="russ-guide-header">
-              <span class="russ-guide-emoji">🎯</span>
-              <span class="russ-guide-title">Lead with the decision</span>
-            </div>
-            <div class="russ-guide-desc">Don't bury the ask. Tell me what you need or recommend up front, then give me context.</div>
+            <div class="russ-guide-header"><span class="russ-guide-emoji">🎯</span><span class="russ-guide-title">Lead with the decision</span></div>
+            <div class="russ-guide-desc">Tell me what you need or recommend first, then give context.</div>
           </div>
           <div class="russ-guide-item">
-            <div class="russ-guide-header">
-              <span class="russ-guide-emoji">🔊</span>
-              <span class="russ-guide-title">Disagree out loud</span>
-            </div>
-            <div class="russ-guide-desc">I want real pushback. If you think I'm wrong, say it. Silence isn't alignment.</div>
+            <div class="russ-guide-header"><span class="russ-guide-emoji">🔊</span><span class="russ-guide-title">Disagree out loud</span></div>
+            <div class="russ-guide-desc">Silence isn't alignment. I want real pushback.</div>
           </div>
           <div class="russ-guide-item">
-            <div class="russ-guide-header">
-              <span class="russ-guide-emoji">🤖</span>
-              <span class="russ-guide-title">AI-first always</span>
-            </div>
-            <div class="russ-guide-desc">If a human is doing something AI could do, we're not operating correctly. No exceptions.</div>
+            <div class="russ-guide-header"><span class="russ-guide-emoji">🤖</span><span class="russ-guide-title">AI-first, always</span></div>
+            <div class="russ-guide-desc">If a human is doing something AI could do, we're not operating correctly.</div>
           </div>
           <div class="russ-guide-item">
-            <div class="russ-guide-header">
-              <span class="russ-guide-emoji">📅</span>
-              <span class="russ-guide-title">Respect the calendar</span>
-            </div>
-            <div class="russ-guide-desc">My calendar is my operating system. Urgency without scheduling doesn't exist.</div>
+            <div class="russ-guide-header"><span class="russ-guide-emoji">📅</span><span class="russ-guide-title">Respect the calendar</span></div>
+            <div class="russ-guide-desc">My calendar is my operating system. Urgency without a meeting doesn't exist.</div>
           </div>
         </div>
       </div>
 
-      <!-- What I'm Reading / Watching -->
+      <!-- Reading / Watching -->
       <div class="card card-sm">
-        <div class="card-label"><span class="dot gray"></span> What I'm Reading & Watching</div>
+        <div class="card-label"><div class="card-label-left"><span class="dot gray"></span> What I'm Reading & Watching</div></div>
         <div class="media-list">
-          <a href="#" class="media-item">
-            <span class="media-type watch">Watch</span>
-            <div class="media-meta">
-              <div class="media-title">The AI Workforce Shift — MIT Tech Review</div>
-              <div class="media-source">Recommended this week</div>
-            </div>
-          </a>
-          <a href="#" class="media-item">
+          <a href="https://x.com/eng_khairallah1" target="_blank" class="media-item">
             <span class="media-type read">Read</span>
             <div class="media-meta">
-              <div class="media-title">Why Canva Buys Creative Services Companies</div>
-              <div class="media-source">Strategy reading</div>
+              <div class="media-title">40 MCP Servers That Turn Claude Into a Productivity Machine</div>
+              <div class="media-source">@eng_khairallah1 on X · Apr 22</div>
             </div>
           </a>
-          <a href="#" class="media-item">
+          <a href="https://canva.com/newsroom" target="_blank" class="media-item">
             <span class="media-type read">Read</span>
             <div class="media-meta">
-              <div class="media-title">Wartime vs. Peacetime CEO — Ben Horowitz</div>
-              <div class="media-source">Foundational</div>
+              <div class="media-title">Introducing Canva AI 2.0: Reimagining how the world creates</div>
+              <div class="media-source">Canva Newsroom · Apr 2026</div>
             </div>
           </a>
-          <a href="#" class="media-item">
-            <span class="media-type listen">Listen</span>
+          <a href="https://ethereum.org/en/whitepaper/" target="_blank" class="media-item">
+            <span class="media-type read">Read</span>
             <div class="media-meta">
-              <div class="media-title">How Operators Think About AI Margins</div>
-              <div class="media-source">Podcast · Added May 1</div>
+              <div class="media-title">Ethereum Whitepaper — Smart Contracts & Decentralized Apps</div>
+              <div class="media-source">ethereum.org · Foundational</div>
+            </div>
+          </a>
+          <a href="https://ninety.io/blog/9-levels-of-leadership" target="_blank" class="media-item">
+            <span class="media-type read">Read</span>
+            <div class="media-meta">
+              <div class="media-title">The 9 Levels of Leadership Every Founder Should Understand</div>
+              <div class="media-source">Ninety.io · Mark Abbott</div>
+            </div>
+          </a>
+          <a href="https://x.com/rohit4verse" target="_blank" class="media-item">
+            <span class="media-type read">Read</span>
+            <div class="media-meta">
+              <div class="media-title">The Most Boring Billion-Dollar Businesses of 2027</div>
+              <div class="media-source">@rohit4verse on X · Apr 22</div>
             </div>
           </a>
         </div>
-        <!-- FUTURE HOOK: Pull from articles command output (ops-os/team/russ/articles/) -->
+        <!-- FUTURE HOOK: Pull from ops-os/team/russ/articles/ via GitHub API -->
       </div>
 
     </div>
 
-    <!-- Purpose Statement -->
+    <!-- Purpose + Mission Stats -->
     <div class="purpose-block">
-      <div class="purpose-eyebrow">Our Purpose</div>
-      <div class="purpose-text">We exist to <em>change lives through creativity</em> — for our clients, our team, and everyone we touch.</div>
+      <div class="purpose-half">
+        <div class="purpose-eyebrow">Our Purpose</div>
+        <div class="purpose-text">We exist to <em>change lives through creativity</em> — for our clients, our team, and everyone we touch.</div>
+      </div>
+      <div class="purpose-half">
+        <div class="purpose-eyebrow">Mission by 2028</div>
+        <div class="purpose-text" style="font-size:clamp(13px,1.2vw,15px);color:var(--gray);margin-bottom:16px">Design Pickle will be the leading creative ops hub for SMBs, with:</div>
+        <div class="mission-stats">
+          <div class="mission-stat"><span class="mission-stat-val">&gt;$50M</span><span class="mission-stat-label">ARR at 20% profit margin</span></div>
+          <div class="mission-stat"><span class="mission-stat-val">&gt;97%</span><span class="mission-stat-label">avg. monthly net revenue retention</span></div>
+          <div class="mission-stat"><span class="mission-stat-val">&gt;25%</span><span class="mission-stat-label">SaaS as % of ARR</span></div>
+        </div>
+      </div>
     </div>
 
-    <!-- Archive (collapsible) -->
+    <!-- Archive -->
     <div class="card" id="archive" style="margin-bottom:16px">
-      <div class="card-label"><span class="dot gray"></span> Past Updates</div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div style="padding:14px 16px;background:var(--black);border:1px solid var(--border);border-radius:10px">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
-            <span style="font-size:13px;font-weight:500;color:var(--white)">Week of Apr 28 — AI Team Rollout Update</span>
-            <span style="font-size:11px;color:var(--dim)">Apr 28</span>
-          </div>
-          <p style="font-size:13px;color:var(--gray)">Placeholder — replace with published summary.</p>
+      <div class="card-label"><div class="card-label-left"><span class="dot gray"></span> Past Updates</div></div>
+      <div class="archive-list">
+        <div class="archive-item">
+          <div class="archive-item-header"><span class="archive-item-title">Week of Apr 28 — AI Team Rollout Update</span><span class="archive-item-date">Apr 28</span></div>
+          <div class="archive-item-body">Placeholder — will be replaced with published weekly summary on next update.</div>
         </div>
-        <div style="padding:14px 16px;background:var(--black);border:1px solid var(--border);border-radius:10px">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
-            <span style="font-size:13px;font-weight:500;color:var(--white)">Week of Apr 21 — CHIPS Vision</span>
-            <span style="font-size:11px;color:var(--dim)">Apr 21</span>
-          </div>
-          <p style="font-size:13px;color:var(--gray)">Placeholder — replace with published summary.</p>
+        <div class="archive-item">
+          <div class="archive-item-header"><span class="archive-item-title">Week of Apr 21 — CHIPS Vision</span><span class="archive-item-date">Apr 21</span></div>
+          <div class="archive-item-body">Placeholder — will be replaced with published weekly summary on next update.</div>
         </div>
-        <div style="padding:14px 16px;background:var(--black);border:1px solid var(--border);border-radius:10px">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
-            <span style="font-size:13px;font-weight:500;color:var(--white)">Week of Apr 14 — The Cost Conversation</span>
-            <span style="font-size:11px;color:var(--dim)">Apr 14</span>
-          </div>
-          <p style="font-size:13px;color:var(--gray)">Placeholder — replace with published summary.</p>
+        <div class="archive-item">
+          <div class="archive-item-header"><span class="archive-item-title">Week of Apr 14 — The Cost Conversation</span><span class="archive-item-date">Apr 14</span></div>
+          <div class="archive-item-body">Placeholder — will be replaced with published weekly summary on next update.</div>
         </div>
       </div>
     </div>
@@ -504,126 +489,214 @@ button{cursor:pointer;font-family:var(--sans)}
 
   <!-- Mission Footer -->
   <div class="mission-footer">
-    <div class="mission-label">Mission</div>
-    <div class="mission-text"><strong>Design Pickle</strong> — The world's most scalable creative service.</div>
+    <div class="mission-footer-label">Mission</div>
+    <div class="mission-footer-text"><strong>Design Pickle will be the leading creative ops hub for small & mid-sized businesses</strong> — with &gt;$50M ARR, &gt;97% net revenue retention, and &gt;25% SaaS as a share of ARR — by 2028.</div>
     <img src="https://designpickle.com/images/logo_brand.svg" alt="Design Pickle" class="footer-logo">
+    <div class="footer-sub">Design Pickle CEO Hub · Internal use only · <span id="footerYear"></span></div>
   </div>
 
 </div><!-- /app -->
 
 <script>
-// ─── CONFIG ───
-const ADMIN_EMAIL = 'russ@designpickle.com';
-const WHITELIST = [
-  // Add non-@designpickle.com exceptions here
-  // 'advisor@example.com'
-];
-const SESSION_KEY = 'dpCeoHubV2';
+// ─── CONFIG ───────────────────────────────────────────────────────
+const API_URL = 'https://pickle-api.vercel.app'; // update after Vercel deploy
+const SESSION_KEY = 'dpCeoHubV3';
 const SESSION_DAYS = 30;
-const LAST_UPDATED = '2026-05-05';
+const CONTENT_KEY = 'dpCeoHubContent';
+const ADMIN_EMAIL = 'russ@designpickle.com';
 
-// ─── AUTH ───
-function normalizeEmail(v){ return v.trim().toLowerCase(); }
-function isValidEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
-function getRole(email){
-  if(email === ADMIN_EMAIL) return 'admin';
-  if(email.endsWith('@designpickle.com')) return 'employee';
-  if(WHITELIST.includes(email)) return 'guest';
-  return null;
+// Fallback whitelist for when API is unavailable
+const CLIENT_WHITELIST_DOMAINS = ['@designpickle.com'];
+
+// ─── JWT decode (no verify — verification is server-side on issue) ──
+function decodeJWT(token) {
+  try {
+    const [, payload] = token.split('.');
+    const json = atob(payload.replace(/-/g,'+').replace(/_/g,'/'));
+    return JSON.parse(json);
+  } catch(e) { return null; }
 }
-function saveSession(email, role){
-  const exp = Date.now() + SESSION_DAYS * 864e5;
-  localStorage.setItem(SESSION_KEY, JSON.stringify({email, role, exp}));
+
+// ─── SESSION ──────────────────────────────────────────────────────
+function saveSession(jwt) {
+  const payload = decodeJWT(jwt);
+  if (!payload) return null;
+  localStorage.setItem(SESSION_KEY, JSON.stringify({ jwt, email: payload.email, role: payload.role, exp: payload.exp * 1000 }));
+  return payload;
 }
-function getSession(){
-  try{
-    const s = JSON.parse(localStorage.getItem(SESSION_KEY)||'null');
-    if(!s || Date.now() > s.exp) return null;
+function getSession() {
+  try {
+    const s = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
+    if (!s || Date.now() > s.exp) { localStorage.removeItem(SESSION_KEY); return null; }
     return s;
-  }catch(e){ return null; }
+  } catch(e) { return null; }
 }
-function clearSession(){ localStorage.removeItem(SESSION_KEY); }
+function clearSession() { localStorage.removeItem(SESSION_KEY); }
 
-// ─── UI STATE ───
-let pendingAuth = null;
-
-function showMsg(type, text){
-  const el = document.getElementById('authMsg');
-  el.className = 'auth-msg ' + type;
-  el.textContent = text;
+// ─── CONTENT STORE (admin edits, shared via localStorage) ─────────
+function getContent() {
+  try { return JSON.parse(localStorage.getItem(CONTENT_KEY) || '{}'); } catch(e) { return {}; }
 }
-function clearMsg(){
-  const el = document.getElementById('authMsg');
-  el.className = 'auth-msg';
-  el.textContent = '';
-  document.getElementById('magicConfirmBtn').style.display = 'none';
+function saveContent(key, val) {
+  const c = getContent();
+  c[key] = val;
+  localStorage.setItem(CONTENT_KEY, JSON.stringify(c));
+}
+function applyContent() {
+  const c = getContent();
+  if (c.postTag) document.getElementById('postTag').textContent = c.postTag;
+  if (c.postTitle) document.getElementById('postTitle').textContent = c.postTitle;
+  if (c.postBody) {
+    document.getElementById('postBody').innerHTML = c.postBody.split('\n\n').map(p => `<p>${p}</p>`).join('');
+  }
 }
 
-function showApp(session){
+// ─── AUTH FORM ────────────────────────────────────────────────────
+const authForm = document.getElementById('authForm');
+const authMsg = document.getElementById('authMsg');
+const authSubmitBtn = document.getElementById('authSubmitBtn');
+
+function showMsg(type, text) {
+  authMsg.className = 'auth-msg ' + type;
+  authMsg.textContent = text;
+}
+
+authForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('emailInput').value.trim().toLowerCase();
+  if (!email) return;
+
+  authSubmitBtn.disabled = true;
+  authSubmitBtn.textContent = 'Sending…';
+  showMsg('', '');
+
+  try {
+    const res = await fetch(`${API_URL}/api/auth/send`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      showMsg('success', `✓ Magic link sent to ${email}. Check your inbox (and spam).`);
+      authSubmitBtn.textContent = 'Sent!';
+    } else {
+      showMsg(res.status === 403 ? 'blocked' : 'error', data.error || 'Something went wrong.');
+      authSubmitBtn.disabled = false;
+      authSubmitBtn.textContent = 'Send magic link →';
+    }
+  } catch(err) {
+    showMsg('error', 'Could not reach auth server. Try again.');
+    authSubmitBtn.disabled = false;
+    authSubmitBtn.textContent = 'Send magic link →';
+  }
+});
+
+// ─── HANDLE MAGIC LINK RETURN (JWT in URL hash) ───────────────────
+function handleHashReturn() {
+  const hash = window.location.hash;
+  if (!hash.includes('session=')) return false;
+  const match = hash.match(/session=([^&]+)/);
+  if (!match) return false;
+  const jwt = decodeURIComponent(match[1]);
+  const payload = saveSession(jwt);
+  if (payload) {
+    window.history.replaceState(null, '', window.location.pathname);
+    showApp(payload);
+    return true;
+  }
+  return false;
+}
+
+// ─── SHOW/HIDE APP ────────────────────────────────────────────────
+function showApp(session) {
   document.getElementById('authGate').classList.add('hidden');
   const app = document.getElementById('app');
   app.classList.add('visible');
+  if (session.role === 'admin' || session.email === ADMIN_EMAIL) {
+    app.classList.add('is-admin');
+    document.getElementById('adminBadge').style.display = 'inline';
+  }
   document.getElementById('headerEmail').textContent = session.email;
-  document.getElementById('lastUpdated').textContent = 'Updated ' + LAST_UPDATED;
+  applyContent();
 }
-function showAuthGate(){
+function showAuthGate() {
   document.getElementById('authGate').classList.remove('hidden');
   document.getElementById('app').classList.remove('visible');
+  document.getElementById('app').classList.remove('is-admin');
 }
 
-// ─── FORM SUBMIT ───
-document.getElementById('authForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  clearMsg();
-  const email = normalizeEmail(document.getElementById('emailInput').value);
-  if(!email || !isValidEmail(email)){
-    showMsg('error','Enter a valid email address.'); return;
-  }
-  const role = getRole(email);
-  if(!role){
-    showMsg('blocked','This hub is for Design Pickle team members only. Ask Russ to whitelist your email.'); return;
-  }
-  pendingAuth = {email, role};
-  showMsg('success','You\'re on the list! Since this is a static site, click below to enter.');
-  document.getElementById('magicConfirmBtn').style.display = 'block';
-});
-
-document.getElementById('magicConfirmBtn').addEventListener('click', function(){
-  if(!pendingAuth) return;
-  saveSession(pendingAuth.email, pendingAuth.role);
-  showApp(pendingAuth);
-  pendingAuth = null;
-});
-
-document.getElementById('signoutBtn').addEventListener('click', function(){
+document.getElementById('signoutBtn').addEventListener('click', function() {
   clearSession();
   showAuthGate();
   document.getElementById('emailInput').value = '';
-  clearMsg();
+  authMsg.className = 'auth-msg';
+  authMsg.textContent = '';
+  authSubmitBtn.disabled = false;
+  authSubmitBtn.textContent = 'Send magic link →';
 });
 
-// ─── OUTCOMES TABS ───
-function switchOutcomes(tab, btn){
+// ─── ADMIN EDITOR ─────────────────────────────────────────────────
+function toggleEdit(section) {
+  const form = document.getElementById('edit-' + section);
+  if (!form) return;
+  const isOpen = form.classList.contains('open');
+  if (!isOpen && section === 'post') {
+    document.getElementById('editPostTag').value = document.getElementById('postTag').textContent;
+    document.getElementById('editPostTitle').value = document.getElementById('postTitle').textContent;
+    const paras = Array.from(document.getElementById('postBody').querySelectorAll('p')).map(p => p.textContent);
+    document.getElementById('editPostBody').value = paras.join('\n\n');
+  }
+  form.classList.toggle('open');
+}
+function savePost() {
+  const tag = document.getElementById('editPostTag').value.trim();
+  const title = document.getElementById('editPostTitle').value.trim();
+  const body = document.getElementById('editPostBody').value.trim();
+  if (tag) { document.getElementById('postTag').textContent = tag; saveContent('postTag', tag); }
+  if (title) { document.getElementById('postTitle').textContent = title; saveContent('postTitle', title); }
+  if (body) {
+    document.getElementById('postBody').innerHTML = body.split('\n\n').map(p => `<p>${p}</p>`).join('');
+    saveContent('postBody', body);
+  }
+  toggleEdit('post');
+}
+function addOutcome(tab) {
+  const text = prompt('Outcome text (e.g. "Cost plan finalized"):');
+  if (!text) return;
+  const status = prompt('Status: done / progress / pending', 'pending') || 'pending';
+  const list = document.getElementById(tab + 'List');
+  const li = document.createElement('li');
+  li.className = 'outcome-item';
+  const checkClass = status === 'done' ? 'done' : status === 'progress' ? 'progress' : 'pending';
+  const checkChar = status === 'done' ? '✓' : status === 'progress' ? '→' : '';
+  li.innerHTML = `<span class="outcome-check ${checkClass}">${checkChar}</span><span class="outcome-text">${text}</span>`;
+  list.appendChild(li);
+}
+
+// ─── OUTCOME TABS ─────────────────────────────────────────────────
+function switchOutcomes(tab, btn) {
   document.querySelectorAll('.outcome-tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.outcome-pane').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('outcome' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
 }
 
-// ─── WEEK NUMBER ───
-function getISOWeek(d){
-  const date = new Date(d);
-  date.setHours(0,0,0,0);
+// ─── UTILS ────────────────────────────────────────────────────────
+function getISOWeek(d) {
+  const date = new Date(d); date.setHours(0,0,0,0);
   date.setDate(date.getDate() + 3 - (date.getDay()+6)%7);
-  const week1 = new Date(date.getFullYear(),0,4);
-  return 1 + Math.round(((date-week1)/86400000 - 3 + (week1.getDay()+6)%7)/7);
+  const w1 = new Date(date.getFullYear(),0,4);
+  return 1 + Math.round(((date-w1)/864e5 - 3 + (w1.getDay()+6)%7)/7);
 }
 document.getElementById('currentWeek').textContent = 'Wk ' + getISOWeek(new Date());
+document.getElementById('footerYear').textContent = new Date().getFullYear();
 
-// ─── INIT ───
-(function(){
+// ─── INIT ─────────────────────────────────────────────────────────
+(function init() {
+  if (handleHashReturn()) return;
   const session = getSession();
-  if(session) showApp(session);
+  if (session) showApp(session);
   else showAuthGate();
 })();
 </script>
