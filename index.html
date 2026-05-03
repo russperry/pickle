@@ -652,21 +652,10 @@ authForm.addEventListener('submit', async function(e) {
   }
 });
 
-// ─── HANDLE MAGIC LINK RETURN (JWT in URL hash) ───────────────────
-function handleHashReturn() {
-  const hash = window.location.hash;
-  if (!hash.includes('session=')) return false;
-  const match = hash.match(/session=([^&]+)/);
-  if (!match) return false;
-  const jwt = decodeURIComponent(match[1]);
-  const payload = saveSession(jwt);
-  if (payload) {
-    window.history.replaceState(null, '', window.location.pathname);
-    showApp(payload);
-    return true;
-  }
-  return false;
-}
+// ─── HANDLE MAGIC LINK RETURN ────────────────────────────────────
+// Session is written directly to localStorage by /api/auth/verify before
+// redirecting here — no hash fragment needed.
+function handleHashReturn() { return false; }
 
 // ─── SHOW/HIDE APP ────────────────────────────────────────────────
 function showApp(session) {
