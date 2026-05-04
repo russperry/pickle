@@ -686,6 +686,19 @@ function handleHashReturn() {
 
 // ─── SHOW/HIDE APP ────────────────────────────────────────────────
 function showApp(session) {
+  // If user came from a deep link under /pickle/, bounce them back.
+  try {
+    const r = sessionStorage.getItem('pickleReturnTo');
+    if (r) {
+      const { path, ts } = JSON.parse(r);
+      sessionStorage.removeItem('pickleReturnTo');
+      if (path && /^\/pickle\//.test(path) && Date.now() - ts < 10 * 60 * 1000) {
+        location.replace(path);
+        return;
+      }
+    }
+  } catch(e) { sessionStorage.removeItem('pickleReturnTo'); }
+
   document.getElementById('authGate').classList.add('hidden');
   const app = document.getElementById('app');
   app.classList.add('visible');
