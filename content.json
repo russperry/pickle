@@ -84,19 +84,9 @@
   ],
   "archive": [
     {
-      "date": "Apr 28",
-      "title": "Week of Apr 28 \u2014 AI Team Rollout Update",
-      "body": "Placeholder \u2014 will be replaced with published weekly summary."
-    },
-    {
-      "date": "Apr 21",
-      "title": "Week of Apr 21 \u2014 CHIPS Vision",
-      "body": "Placeholder \u2014 will be replaced with published weekly summary."
-    },
-    {
-      "date": "Apr 14",
-      "title": "Week of Apr 14 \u2014 The Cost Conversation",
-      "body": "Placeholder \u2014 will be replaced with published weekly summary."
+      "date": "May 4",
+      "title": "Week 19 \u2014 Execution Begins",
+      "body": "The Chapter Three strategy is locked and we're moving into execution mode. Russ completed a successful Canva QBR in Austin \u2014 packaging and pricing landed well with Meg Moss, opening direct access to Canva's sales team. The board meeting is done, the Chapter Three update dashboard is live, and Jar is being formally handed to Arnoe this week so Russ can consolidate focus on Subscriptions and CHIPS standup. On the engineering side, Arnoe cleared the JAR AI go/no-go (decision: go) and has three external engineering resources \u2014 Neutech, Irya, and Svemir \u2014 now active on the agentic track. Consolidated Comms had its first live demo with the Ops team, scope was right-sized, and delivery is in progress.\n\nOn the revenue side, Jen's data shows churn (12K) is still outpacing new MRR (1K) \u2014 churn reduction is the single biggest lever. Rob landed all three Auto Assigner improvements (single queue, auto-run on give-back, revision logic) and is mid-negotiation on the Adobe contract. Kevin is investigating COGS creep and auditing the ETL/Tableau infrastructure, which currently has no single owner. Ops OS is rolling out to the full team this week."
     }
   ],
   "meta": {
