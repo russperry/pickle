@@ -186,12 +186,20 @@ textarea,input{font-family:var(--sans)}
 .mission-stat-label{font-size:12px;color:var(--gray);line-height:1.4}
 
 /* Archive */
-.archive-list{display:flex;flex-direction:column;gap:8px}
-.archive-item{padding:13px 16px;background:var(--black);border:1px solid var(--border);border-radius:10px}
-.archive-item-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;gap:12px}
-.archive-item-title{font-size:13px;font-weight:500;color:var(--white);flex:1}
+.archive-item{padding:16px 18px;background:var(--black);border:1px solid var(--border);border-radius:10px}
+.archive-item-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;gap:12px}
+.archive-item-title{font-size:14px;font-weight:600;color:var(--white);flex:1}
 .archive-item-date{font-size:11px;color:var(--dim);flex-shrink:0}
-.archive-item-body{font-size:13px;color:var(--gray);line-height:1.5}
+.archive-item-body{font-size:13px;color:var(--gray);line-height:1.65}
+.archive-item-body p{margin-bottom:8px}
+.archive-item-body p:last-child{margin-bottom:0}
+.archive-item-body ul{margin:6px 0 8px 16px;padding:0}
+.archive-item-body ul li{margin-bottom:4px;color:var(--gray);font-size:13px;line-height:1.5}
+.archive-item-body .signal{display:flex;align-items:baseline;gap:6px;padding:5px 0;border-bottom:1px solid var(--border)}
+.archive-item-body .signal:last-child{border-bottom:none}
+.archive-item-body .signal-who{font-size:11px;font-weight:600;color:var(--white);text-transform:uppercase;letter-spacing:.06em;flex-shrink:0;width:56px}
+.archive-item-body .signal-text{font-size:13px;color:var(--gray);line-height:1.5}
+.archive-section-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:12px 0 6px}
 
 /* Mission footer */
 .mission-footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;margin-top:8px}
@@ -568,18 +576,36 @@ function applyContent(c) {
     }
   }
 
-  // Archive
+  // Archive / Weekly Ops Digest
   if (c.archive && c.archive.length) {
     const archList = document.querySelector('.archive-list');
     if (archList) {
-      archList.innerHTML = c.archive.map(item => `
-        <div class="archive-item">
+      archList.innerHTML = c.archive.map(item => {
+        // body can be a string (legacy) or an array of {who, text} signals
+        let bodyHtml = '';
+        if (typeof item.body === 'string') {
+          bodyHtml = item.body.split('\n\n').map(p => `<p>${p}</p>`).join('');
+        } else if (Array.isArray(item.body)) {
+          // Check if it's sections: [{section, signals:[{who,text}]}]
+          bodyHtml = item.body.map(section => {
+            if (section.section) {
+              const rows = (section.signals || []).map(s =>
+                `<div class="signal"><span class="signal-who">${s.who}</span><span class="signal-text">${s.text}</span></div>`
+              ).join('');
+              return `<div class="archive-section-label">${section.section}</div>${rows}`;
+            }
+            // plain {who, text} at top level
+            return `<div class="signal"><span class="signal-who">${section.who||''}</span><span class="signal-text">${section.text||''}</span></div>`;
+          }).join('');
+        }
+        return `<div class="archive-item">
           <div class="archive-item-header">
             <span class="archive-item-title">${item.title}</span>
             <span class="archive-item-date">${item.date}</span>
           </div>
-          <div class="archive-item-body">${item.body}</div>
-        </div>`).join('');
+          <div class="archive-item-body">${bodyHtml}</div>
+        </div>`;
+      }).join('');
     }
   }
 

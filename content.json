@@ -86,7 +86,72 @@
     {
       "date": "May 4",
       "title": "Week 19 \u2014 Execution Begins",
-      "body": "The Chapter Three strategy is locked and we're moving into execution mode. Russ completed a successful Canva QBR in Austin \u2014 packaging and pricing landed well with Meg Moss, opening direct access to Canva's sales team. The board meeting is done, the Chapter Three update dashboard is live, and Jar is being formally handed to Arnoe this week so Russ can consolidate focus on Subscriptions and CHIPS standup. On the engineering side, Arnoe cleared the JAR AI go/no-go (decision: go) and has three external engineering resources \u2014 Neutech, Irya, and Svemir \u2014 now active on the agentic track. Consolidated Comms had its first live demo with the Ops team, scope was right-sized, and delivery is in progress.\n\nOn the revenue side, Jen's data shows churn (12K) is still outpacing new MRR (1K) \u2014 churn reduction is the single biggest lever. Rob landed all three Auto Assigner improvements (single queue, auto-run on give-back, revision logic) and is mid-negotiation on the Adobe contract. Kevin is investigating COGS creep and auditing the ETL/Tableau infrastructure, which currently has no single owner. Ops OS is rolling out to the full team this week."
+      "body": [
+        {
+          "section": "Strategy",
+          "signals": [
+            {
+              "who": "Russ",
+              "text": "Chapter Three locked. Three-lane model holds \u2014 Jar handed to Arnoe, personal focus consolidates on Subscriptions (Bryan) and CHIPS standup."
+            },
+            {
+              "who": "Russ",
+              "text": "Canva QBR in Austin landed well. Packaging & pricing presentation to Meg Moss opened direct access to Canva's sales team."
+            },
+            {
+              "who": "Russ",
+              "text": "Board meeting done. Chapter Three update dashboard live at russperry.github.io/dp-chapter-three/."
+            }
+          ]
+        },
+        {
+          "section": "Engineering & Product",
+          "signals": [
+            {
+              "who": "Arnoe",
+              "text": "JAR AI go/no-go = go. 1/2/3 month roadmap now in build mode. Three external resources (Neutech, Irya, Svemir) active on the agentic track."
+            },
+            {
+              "who": "Arnoe",
+              "text": "Consolidated Comms first live demo with Ops team \u2014 scope cut ~75%, right-sized to a single Client:DP comms channel. Delivery in progress."
+            },
+            {
+              "who": "Rob",
+              "text": "Auto Assigner: all three improvements shipped \u2014 single queue, auto-run on give-back >30min, revision logic. Adobe contract negotiation ongoing."
+            }
+          ]
+        },
+        {
+          "section": "Revenue & Finance",
+          "signals": [
+            {
+              "who": "Jen",
+              "text": "Net MRR: -$43,943. Churn ($112K) outpacing new MRR ($71K). Churn reduction is the #1 lever. April demo completion rate: 80% (129/162)."
+            },
+            {
+              "who": "Jen",
+              "text": "Intercom renewal signed at significant discount. HubSpot negotiation ongoing \u2014 vendor not acknowledging team size constraints."
+            },
+            {
+              "who": "Kevin",
+              "text": "Investigating creative contractor COGS creep. Auditing ETL/Tableau pipeline \u2014 no single owner remains. First week in Ops OS."
+            }
+          ]
+        },
+        {
+          "section": "Operations",
+          "signals": [
+            {
+              "who": "Arnoe",
+              "text": "Ops OS rolling out company-wide this week. Windows install path not yet usable end-to-end \u2014 running old Windows machine as test rig."
+            },
+            {
+              "who": "Jen",
+              "text": "Ambral rollout: all accounts active, friction remains from Ambral/HubSpot duplication. Official rollout pending final refinements."
+            }
+          ]
+        }
+      ]
     }
   ],
   "meta": {
