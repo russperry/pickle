@@ -6,33 +6,100 @@
   },
   "outcomes": {
     "week": [
-      { "status": "progress", "text": "Cost plan finalized with CFO Q1-2026" },
-      { "status": "pending", "text": "Launch Ops-Os to teams" },
-      { "status": "progress", "text": "CEO Dashboard + Board recap to full team" },
-      { "status": "pending", "text": "CHIPS full work sessions" },
-      { "status": "pending", "text": "Review new Jar roadmap with Arnoe" }
+      {
+        "status": "progress",
+        "text": "Cost plan finalized with CFO Q1-2026"
+      },
+      {
+        "status": "pending",
+        "text": "Launch Ops-Os to teams"
+      },
+      {
+        "status": "progress",
+        "text": "CEO Dashboard + Board recap to full team"
+      },
+      {
+        "status": "pending",
+        "text": "CHIPS full work sessions"
+      },
+      {
+        "status": "pending",
+        "text": "Review new Jar roadmap with Arnoe"
+      }
     ],
     "month": [
-      { "status": "pending", "text": "Revamp GTM with Canva + production lead" },
-      { "status": "pending", "text": "CHIPS Alpha launch to 20+ designers and 10 sample clients" },
-      { "status": "pending", "text": "AI for Operators course delivered to network" },
-      { "status": "pending", "text": "Canva GTM plan activated post-Create" },
-      { "status": "pending", "text": "1:1 tour with Canva AEs" }
+      {
+        "status": "pending",
+        "text": "Revamp GTM with Canva + production lead"
+      },
+      {
+        "status": "pending",
+        "text": "CHIPS Alpha launch to 20+ designers and 10 sample clients"
+      },
+      {
+        "status": "pending",
+        "text": "AI for Operators course delivered to network"
+      },
+      {
+        "status": "pending",
+        "text": "Canva GTM plan activated post-Create"
+      },
+      {
+        "status": "pending",
+        "text": "1:1 tour with Canva AEs"
+      }
     ]
   },
   "reading": [
-    { "type": "read", "title": "40 MCP Servers That Turn Claude Into a Productivity Machine", "source": "@eng_khairallah1 on X · Apr 22", "url": "https://x.com/eng_khairallah1" },
-    { "type": "read", "title": "Introducing Canva AI 2.0: Reimagining how the world creates", "source": "Canva Newsroom · Apr 2026", "url": "https://canva.com/newsroom" },
-    { "type": "read", "title": "Ethereum Whitepaper — Smart Contracts & Decentralized Apps", "source": "ethereum.org · Foundational", "url": "https://ethereum.org/en/whitepaper/" },
-    { "type": "read", "title": "The 9 Levels of Leadership Every Founder Should Understand", "source": "Ninety.io · Mark Abbott", "url": "https://www.ninety.io/blog/the-9-levels-of-leadership" },
-    { "type": "read", "title": "The Most Boring Billion-Dollar Businesses of 2027", "source": "@rohit4verse on X · Apr 22", "url": "https://x.com/rohit4verse" }
+    {
+      "type": "read",
+      "title": "40 MCP Servers That Turn Claude Into a Productivity Machine",
+      "source": "@eng_khairallah1 on X \u00b7 Apr 22",
+      "url": "https://x.com/eng_khairallah1"
+    },
+    {
+      "type": "read",
+      "title": "Introducing Canva AI 2.0: Reimagining how the world creates",
+      "source": "Canva Newsroom \u00b7 Apr 2026",
+      "url": "https://canva.com/newsroom"
+    },
+    {
+      "type": "read",
+      "title": "Ethereum Whitepaper \u2014 Smart Contracts & Decentralized Apps",
+      "source": "ethereum.org \u00b7 Foundational",
+      "url": "https://ethereum.org/en/whitepaper/"
+    },
+    {
+      "type": "read",
+      "title": "The 9 Levels of Leadership Every Founder Should Understand",
+      "source": "Ninety.io \u00b7 Mark Abbott",
+      "url": "https://www.ninety.io/blog/the-9-levels-of-leadership"
+    },
+    {
+      "type": "read",
+      "title": "The Most Boring Billion-Dollar Businesses of 2027",
+      "source": "@rohit4verse on X \u00b7 Apr 22",
+      "url": "https://x.com/rohit4verse"
+    }
   ],
   "archive": [
-    { "date": "Apr 28", "title": "Week of Apr 28 — AI Team Rollout Update", "body": "Placeholder — will be replaced with published weekly summary." },
-    { "date": "Apr 21", "title": "Week of Apr 21 — CHIPS Vision", "body": "Placeholder — will be replaced with published weekly summary." },
-    { "date": "Apr 14", "title": "Week of Apr 14 — The Cost Conversation", "body": "Placeholder — will be replaced with published weekly summary." }
+    {
+      "date": "Apr 28",
+      "title": "Week of Apr 28 \u2014 AI Team Rollout Update",
+      "body": "Placeholder \u2014 will be replaced with published weekly summary."
+    },
+    {
+      "date": "Apr 21",
+      "title": "Week of Apr 21 \u2014 CHIPS Vision",
+      "body": "Placeholder \u2014 will be replaced with published weekly summary."
+    },
+    {
+      "date": "Apr 14",
+      "title": "Week of Apr 14 \u2014 The Cost Conversation",
+      "body": "Placeholder \u2014 will be replaced with published weekly summary."
+    }
   ],
   "meta": {
-    "lastUpdated": "2026-05-05"
+    "lastUpdated": "2026-05-04"
   }
 }
