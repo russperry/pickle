@@ -88,66 +88,96 @@
       "title": "Week 19 \u2014 Execution Begins",
       "body": [
         {
-          "section": "Strategy",
+          "section": "\ud83d\udfe2 Subscriptions (Lane 1)",
           "signals": [
             {
-              "who": "Russ",
-              "text": "Chapter Three locked. Three-lane model holds \u2014 Jar handed to Arnoe, personal focus consolidates on Subscriptions (Bryan) and CHIPS standup."
+              "who": "Jen",
+              "text": "Net MRR: -$43,943. Churn ($112K) outpacing new MRR ($71K) \u2014 churn reduction is the #1 lever this month."
             },
             {
-              "who": "Russ",
-              "text": "Canva QBR in Austin landed well. Packaging & pricing presentation to Meg Moss opened direct access to Canva's sales team."
-            },
-            {
-              "who": "Russ",
-              "text": "Board meeting done. Chapter Three update dashboard live at russperry.github.io/dp-chapter-three/."
-            }
-          ]
-        },
-        {
-          "section": "Engineering & Product",
-          "signals": [
-            {
-              "who": "Arnoe",
-              "text": "JAR AI go/no-go = go. 1/2/3 month roadmap now in build mode. Three external resources (Neutech, Irya, Svemir) active on the agentic track."
-            },
-            {
-              "who": "Arnoe",
-              "text": "Consolidated Comms first live demo with Ops team \u2014 scope cut ~75%, right-sized to a single Client:DP comms channel. Delivery in progress."
+              "who": "Jen",
+              "text": "April demos: 80% completion rate (129/162). Ambral fully active on all accounts; HubSpot duplication friction being resolved."
             },
             {
               "who": "Rob",
-              "text": "Auto Assigner: all three improvements shipped \u2014 single queue, auto-run on give-back >30min, revision logic. Adobe contract negotiation ongoing."
+              "text": "Auto Assigner fully shipped \u2014 single queue, give-back auto-run, revision logic. Canva % of tickets: 24.4% and rising."
+            },
+            {
+              "who": "Rob",
+              "text": "Adobe contract negotiation live (meeting May 1). Customer sensitivity analysis near complete."
             }
           ]
         },
         {
-          "section": "Revenue & Finance",
-          "signals": [
-            {
-              "who": "Jen",
-              "text": "Net MRR: -$43,943. Churn ($112K) outpacing new MRR ($71K). Churn reduction is the #1 lever. April demo completion rate: 80% (129/162)."
-            },
-            {
-              "who": "Jen",
-              "text": "Intercom renewal signed at significant discount. HubSpot negotiation ongoing \u2014 vendor not acknowledging team size constraints."
-            },
-            {
-              "who": "Kevin",
-              "text": "Investigating creative contractor COGS creep. Auditing ETL/Tableau pipeline \u2014 no single owner remains. First week in Ops OS."
-            }
-          ]
-        },
-        {
-          "section": "Operations",
+          "section": "\ud83d\udd35 Jar (Lane 2)",
           "signals": [
             {
               "who": "Arnoe",
-              "text": "Ops OS rolling out company-wide this week. Windows install path not yet usable end-to-end \u2014 running old Windows machine as test rig."
+              "text": "JAR AI go/no-go = go. 1/2/3 month roadmap in build mode. Architecture: branding module as a separate, public-facing surface \u2014 AI-driven creative briefing interface as first consumer surface."
+            },
+            {
+              "who": "Arnoe",
+              "text": "3 external engineering resources now active: Neutech (Snr shortlist set), Irya Solutions (NDA signed, first initiative prepping), Svemir (commercials pending)."
+            },
+            {
+              "who": "Arnoe",
+              "text": "Consolidated Comms: first live demo delivered, scope right-sized (~75% cut). Day-one = single Client:DP channel. Delivery in progress."
+            },
+            {
+              "who": "Russ",
+              "text": "Jar formally handed to Arnoe this week. Roadmap review 90% complete with Arnoe + Janco."
+            }
+          ]
+        },
+        {
+          "section": "\ud83d\udfe1 CHIPS (Lane 3)",
+          "signals": [
+            {
+              "who": "Russ",
+              "text": "First full week back on CHIPS. More material update after this week's work sessions."
+            }
+          ]
+        },
+        {
+          "section": "\ud83e\udd1d Canva",
+          "signals": [
+            {
+              "who": "Russ",
+              "text": "QBR in Austin: packaging & pricing landed well with Meg Moss. Direct access to Canva's sales team now open."
+            },
+            {
+              "who": "Russ",
+              "text": "Updated Canva sales plan drafted \u2014 reviewing with leaders this week and handing off. Partnership plan with Meg formalizing."
+            },
+            {
+              "who": "Rob",
+              "text": "Canva transition communicated to creative leads. Canva volume staffing model in progress with Janelle."
+            }
+          ]
+        },
+        {
+          "section": "\ud83d\udcb0 Cost & Runway",
+          "signals": [
+            {
+              "who": "Kevin",
+              "text": "Investigating creative contractor COGS creep. ETL/Tableau audit underway \u2014 no single owner remains, documenting institutional knowledge."
             },
             {
               "who": "Jen",
-              "text": "Ambral rollout: all accounts active, friction remains from Ambral/HubSpot duplication. Official rollout pending final refinements."
+              "text": "Intercom renewal signed at significant discount + seat reduction. HubSpot negotiation ongoing."
+            }
+          ]
+        },
+        {
+          "section": "\u2699\ufe0f Leadership & Org",
+          "signals": [
+            {
+              "who": "Russ",
+              "text": "Chapter Three strategy locked. Lanes & objectives revision + team assignments with Niket this week \u2014 stalled last week due to board cycles."
+            },
+            {
+              "who": "Arnoe",
+              "text": "Ops OS rolling company-wide this week. Windows install path not yet end-to-end \u2014 running old machine as test rig for Niket's install."
             }
           ]
         }
