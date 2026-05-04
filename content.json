@@ -6,18 +6,18 @@
   },
   "outcomes": {
     "week": [
-      { "status": "progress", "text": "Cost plan finalized with Niket — 300k/month target" },
-      { "status": "done", "text": "AI CoS Course live — 4 enrolled, $6K revenue" },
-      { "status": "pending", "text": "Chapter Three letter sent to full team" },
-      { "status": "pending", "text": "CHIPS sprint plan confirmed with Arnoe" },
-      { "status": "done", "text": "CEO Hub launched for Design Pickle team" }
+      { "status": "progress", "text": "Cost plan finalized with CFO Q1-2026" },
+      { "status": "pending", "text": "Launch Ops-Os to teams" },
+      { "status": "progress", "text": "CEO Dashboard + Board recap to full team" },
+      { "status": "pending", "text": "CHIPS full work sessions" },
+      { "status": "pending", "text": "Review new Jar roadmap with Arnoe" }
     ],
     "month": [
-      { "status": "progress", "text": "300k/month savings executed & tracked" },
-      { "status": "progress", "text": "CHIPS team formed + 3-week sprint underway" },
-      { "status": "done", "text": "AI for Operators live with paying students" },
+      { "status": "pending", "text": "Revamp GTM with Canva + production lead" },
+      { "status": "pending", "text": "CHIPS Alpha launch to 20+ designers and 10 sample clients" },
+      { "status": "pending", "text": "AI for Operators course delivered to network" },
       { "status": "pending", "text": "Canva GTM plan activated post-Create" },
-      { "status": "pending", "text": "Board & team letters sent and acknowledged" }
+      { "status": "pending", "text": "1:1 tour with Canva AEs" }
     ]
   },
   "reading": [
