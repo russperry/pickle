@@ -653,9 +653,21 @@ authForm.addEventListener('submit', async function(e) {
 });
 
 // ─── HANDLE MAGIC LINK RETURN ────────────────────────────────────
-// Session is written directly to localStorage by /api/auth/verify before
-// redirecting here — no hash fragment needed.
-function handleHashReturn() { return false; }
+// verify.js redirects to /?e=email&r=role&x=expiry
+// Read params, store session, clean URL.
+function handleHashReturn() {
+  const params = new URLSearchParams(window.location.search);
+  const email = params.get('e');
+  const role  = params.get('r');
+  const exp   = parseInt(params.get('x'), 10);
+  if (!email || !role || !exp) return false;
+  // Clean the URL immediately
+  window.history.replaceState(null, '', window.location.pathname);
+  // Store session
+  localStorage.setItem(SESSION_KEY, JSON.stringify({ email, role, exp }));
+  showApp({ email, role, exp });
+  return true;
+}
 
 // ─── SHOW/HIDE APP ────────────────────────────────────────────────
 function showApp(session) {
