@@ -1,52 +1,52 @@
 {
   "post": {
-    "tag": "W19-2026",
-    "title": "The Post-Board Meeting Lock-In",
-    "body": "Last week we presented to the board and came away with a focused dose of reality. On one hand, the need for cost reduction was unavoidable due to the lack of new revenue to match our original plan. On the other hand, our focus with Canva and Jar overall was resoundingly accepted and supported.\n\nMore details below in the formal board recap!"
+    "tag": "W20-2026",
+    "title": "Demand Gen is the Moment",
+    "body": "The Jar roadmap is locked — three months of clarity from an incredible collaborative effort by Arnoe, Janco, and the team. That's the good news, and it's a big win.\n\nNow we turn to the next constraint: growth. Lead volume hit historic lows last week. This is not one person's problem — it's a company-wide moment to rally. Outbound is being built. The Canva GTM campaign is in final handoff to sales. Focus is our #1 lever right now, and I'm asking every GTM-adjacent leader to bring their energy here.\n\nI'm OOO Wednesday–Friday this week. Teams should be locked in and executing."
   },
   "outcomes": {
     "week": [
       {
         "status": "progress",
-        "text": "Cost plan finalized with CFO Q1-2026"
-      },
-      {
-        "status": "pending",
-        "text": "Launch Ops-Os to teams"
+        "text": "Rally player/coach leaders around demand gen — outbound system back online"
       },
       {
         "status": "progress",
-        "text": "CEO Dashboard + Board recap to full team"
+        "text": "Canva GTM campaign handoff to sales — finalize and go live"
+      },
+      {
+        "status": "done",
+        "text": "Jar + master roadmap locked for 3 months"
       },
       {
         "status": "pending",
-        "text": "CHIPS full work sessions"
+        "text": "Brief Butler working session (Rob, Arnoe, Janelle, Lacey)"
       },
       {
-        "status": "pending",
-        "text": "Review new Jar roadmap with Arnoe"
+        "status": "progress",
+        "text": "Ops OS final rollout week — nearly full team adoption"
       }
     ],
     "month": [
       {
-        "status": "pending",
-        "text": "Revamp GTM with Canva + production lead"
+        "status": "progress",
+        "text": "Demand gen / outbound system online and consistent"
+      },
+      {
+        "status": "progress",
+        "text": "Canva GTM live — begin outbounding Canva AEs"
+      },
+      {
+        "status": "progress",
+        "text": "Consolidated Comms shipped end of May (64% done)"
       },
       {
         "status": "pending",
-        "text": "CHIPS Alpha launch to 20+ designers and 10 sample clients"
+        "text": "CHIPS alpha build resumes — Week 21"
       },
       {
         "status": "pending",
-        "text": "AI for Operators course delivered to network"
-      },
-      {
-        "status": "pending",
-        "text": "Canva GTM plan activated post-Create"
-      },
-      {
-        "status": "pending",
-        "text": "1:1 tour with Canva AEs"
+        "text": "AI for Operators next cohort open (end of May)"
       }
     ]
   },
@@ -54,45 +54,165 @@
     {
       "type": "read",
       "title": "40 MCP Servers That Turn Claude Into a Productivity Machine",
-      "source": "@eng_khairallah1 on X \u00b7 Apr 22",
+      "source": "@eng_khairallah1 on X · Apr 22",
       "url": "https://x.com/eng_khairallah1"
     },
     {
       "type": "read",
       "title": "Introducing Canva AI 2.0: Reimagining how the world creates",
-      "source": "Canva Newsroom \u00b7 Apr 2026",
+      "source": "Canva Newsroom · Apr 2026",
       "url": "https://canva.com/newsroom"
     },
     {
       "type": "read",
-      "title": "Ethereum Whitepaper \u2014 Smart Contracts & Decentralized Apps",
-      "source": "ethereum.org \u00b7 Foundational",
+      "title": "Ethereum Whitepaper — Smart Contracts & Decentralized Apps",
+      "source": "ethereum.org · Foundational",
       "url": "https://ethereum.org/en/whitepaper/"
     },
     {
       "type": "read",
       "title": "The 9 Levels of Leadership Every Founder Should Understand",
-      "source": "Ninety.io \u00b7 Mark Abbott",
+      "source": "Ninety.io · Mark Abbott",
       "url": "https://www.ninety.io/blog/the-9-levels-of-leadership"
     },
     {
       "type": "read",
       "title": "The Most Boring Billion-Dollar Businesses of 2027",
-      "source": "@rohit4verse on X \u00b7 Apr 22",
+      "source": "@rohit4verse on X · Apr 22",
       "url": "https://x.com/rohit4verse"
     }
   ],
   "archive": [
     {
-      "date": "May 4",
-      "title": "Week 19 \u2014 Execution Begins",
+      "date": "May 11",
+      "title": "Week 20 — Demand Gen Reset",
       "body": [
         {
-          "section": "\ud83d\udfe2 Subscriptions (Lane 1)",
+          "section": "🟢 Subscriptions (Lane 1)",
           "signals": [
             {
               "who": "Jen",
-              "text": "Net MRR: -$43,943. Churn ($112K) outpacing new MRR ($71K) \u2014 churn reduction is the #1 lever this month."
+              "text": "Net MRR: +$8,327 WoW (improved from -$12,927), but MTD barely +$333. Lead volume at historic lows — closed-won deals are coming from older pipeline, not new leads. Pipeline impact will hurt through rest of May; AOP target at risk if outbound and inbound don't recover."
+            },
+            {
+              "who": "Jen",
+              "text": "Demos: 30 created / 17 completed vs. 60+ target. Churn improved to -$18,887 (from -$31,551) but 95% retention not met for second consecutive week. Contraction MRR widened to -$25,105."
+            },
+            {
+              "who": "Jen",
+              "text": "Ambral refinements compiled from CS team — 9 key adjustments to flagging logic (support ticket signals, cancel policy, CSM assignment, Slack silence, etc.). Official rollout still pending."
+            },
+            {
+              "who": "Janelle",
+              "text": "Pomelli pilot active for 2–3 hour accounts — OB team generating internal brand profiles before first request is worked on. Onboarding flow update proposal submitted."
+            },
+            {
+              "who": "Kevin",
+              "text": "Ending MRR $1,678,080. NRR 97.8%. April close underway. May COGS target discussion with Rob ongoing — likely to come in above given month is underway."
+            }
+          ]
+        },
+        {
+          "section": "🔵 Jar (Lane 2)",
+          "signals": [
+            {
+              "who": "Arnoe",
+              "text": "JAR AI 1+3-month roadmap LOCKED and shipped. Phase 1 = Brand strategy + Brand identity only (Brand DNA: identity, strategy, tone of voice, photography). JAR AI pricing = free minus LLM costs for horizontal expansion. BYOT promoted to a service rail."
+            },
+            {
+              "who": "Magda",
+              "text": "Consolidated Comms at 64% this week — ahead of end-of-May target. 2/3hr customer decision resolved (single shared CS user pattern). Bug fixes in existing Jar experience complete."
+            },
+            {
+              "who": "Arnoe",
+              "text": "3 external engineering resources active (Neutech, Irya, Svemir). Take-home assessments sent to Neutech + Irya. Neutech shortlist: 2 Snr + 1 Jnr. Irya NDA signed."
+            },
+            {
+              "who": "Janco",
+              "text": "Open Jar UI/UX phase 1 flow near completion. Canva GTM landing page and ads in progress. Social calendar approved and in flight."
+            },
+            {
+              "who": "Arnoe",
+              "text": "Brief Butler initiative kicked off — creative brief quality identified as the highest-impact client problem. Working session Monday with Rob, Janelle, Lacey. Janelle: 'It's the biggest problem actually.'"
+            },
+            {
+              "who": "Arnoe",
+              "text": "Deel integration PRFAQ complete — team aligned on check-in/checkout system for designer availability and blackout logic. Ledger first ticket in progress (PI-13)."
+            }
+          ]
+        },
+        {
+          "section": "🟡 CHIPS (Lane 3)",
+          "signals": [
+            {
+              "who": "Russ",
+              "text": "CHIPS delayed to Week 21 — this week is OOO prep and GTM handoffs. Jar roadmap lock frees up the bandwidth to re-engage next week."
+            }
+          ]
+        },
+        {
+          "section": "🤝 Canva",
+          "signals": [
+            {
+              "who": "Russ",
+              "text": "Canva GTM campaign (website, ads, consultative concept) in final handoff to sales this week. Goal: begin outbounding Canva AEs. Retargeting micro-targeting ads also in scope."
+            },
+            {
+              "who": "Jen",
+              "text": "Partner agreement sent by Canva to Niket — tracking it down. Adobe → Affinity transition: Canva wants DP to define 'what good looks like' (training, press release, revenue targets). Action: Russ, Rob, Jen this week."
+            },
+            {
+              "who": "Jen",
+              "text": "Lost K. Hovnanian deal on pricing — Canva referral quoted at $25K for 200 pages. Recommendation: re-examine pricing for zero-CAC Canva direct referrals. ENT Studio work from Canva pushed to ~2027 (215 clients, 15 pages each)."
+            },
+            {
+              "who": "Anja",
+              "text": "Pipeline build toward 50% MRR target. Tighter marketing/sales feedback loop in progress. Claude integrations for sales workflow underway."
+            }
+          ]
+        },
+        {
+          "section": "💰 Cost & Runway",
+          "signals": [
+            {
+              "who": "Jen",
+              "text": "Zoom renewal resolved at significant cost reduction. HubSpot negotiation in progress — vendor not acknowledging cost constraints; timeline allows continued negotiation."
+            },
+            {
+              "who": "Kevin",
+              "text": "April close in progress. Commission deliverables for RevOps + JaCoby. Snowflake/Tableau refresh pipeline being triaged and documented — no single owner remains."
+            }
+          ]
+        },
+        {
+          "section": "⚙️ Leadership & Org",
+          "signals": [
+            {
+              "who": "Russ",
+              "text": "Demand gen / outbound declared company-wide priority. Focus is the #1 lever. All GTM-adjacent leaders rallying around Bryan + team with data, insights, and execution."
+            },
+            {
+              "who": "Russ",
+              "text": "Ops OS at ~95% team adoption — one more week to full rollout. AI COS Night Class next cohort launching end of May (free for FTEs — reach out if interested)."
+            },
+            {
+              "who": "Arnoe",
+              "text": "Ops OS Windows install proven end-to-end. Anja, Hollie, Anya all onboarded via simplified Claude-driven SSH key flow. No GitHub Desktop required."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "May 4",
+      "title": "Week 19 — Execution Begins",
+      "body": [
+        {
+          "section": "🟢 Subscriptions (Lane 1)",
+          "signals": [
+            {
+              "who": "Jen",
+              "text": "Net MRR: -$43,943. Churn ($112K) outpacing new MRR ($71K) — churn reduction is the #1 lever this month."
             },
             {
               "who": "Jen",
@@ -100,7 +220,7 @@
             },
             {
               "who": "Rob",
-              "text": "Auto Assigner fully shipped \u2014 single queue, give-back auto-run, revision logic. Canva % of tickets: 24.4% and rising."
+              "text": "Auto Assigner fully shipped — single queue, give-back auto-run, revision logic. Canva % of tickets: 24.4% and rising."
             },
             {
               "who": "Rob",
@@ -109,11 +229,11 @@
           ]
         },
         {
-          "section": "\ud83d\udd35 Jar (Lane 2)",
+          "section": "🔵 Jar (Lane 2)",
           "signals": [
             {
               "who": "Arnoe",
-              "text": "JAR AI go/no-go = go. 1/2/3 month roadmap in build mode. Architecture: branding module as a separate, public-facing surface \u2014 AI-driven creative briefing interface as first consumer surface."
+              "text": "JAR AI go/no-go = go. 1/2/3 month roadmap in build mode. Architecture: branding module as a separate, public-facing surface — AI-driven creative briefing interface as first consumer surface."
             },
             {
               "who": "Arnoe",
@@ -130,7 +250,7 @@
           ]
         },
         {
-          "section": "\ud83d\udfe1 CHIPS (Lane 3)",
+          "section": "🟡 CHIPS (Lane 3)",
           "signals": [
             {
               "who": "Russ",
@@ -139,7 +259,7 @@
           ]
         },
         {
-          "section": "\ud83e\udd1d Canva",
+          "section": "🤝 Canva",
           "signals": [
             {
               "who": "Russ",
@@ -147,7 +267,7 @@
             },
             {
               "who": "Russ",
-              "text": "Updated Canva sales plan drafted \u2014 reviewing with leaders this week and handing off. Partnership plan with Meg formalizing."
+              "text": "Updated Canva sales plan drafted — reviewing with leaders this week and handing off. Partnership plan with Meg formalizing."
             },
             {
               "who": "Rob",
@@ -156,11 +276,11 @@
           ]
         },
         {
-          "section": "\ud83d\udcb0 Cost & Runway",
+          "section": "💰 Cost & Runway",
           "signals": [
             {
               "who": "Kevin",
-              "text": "Investigating creative contractor COGS creep. ETL/Tableau audit underway \u2014 no single owner remains, documenting institutional knowledge."
+              "text": "Investigating creative contractor COGS creep. ETL/Tableau audit underway — no single owner remains, documenting institutional knowledge."
             },
             {
               "who": "Jen",
@@ -169,15 +289,15 @@
           ]
         },
         {
-          "section": "\u2699\ufe0f Leadership & Org",
+          "section": "⚙️ Leadership & Org",
           "signals": [
             {
               "who": "Russ",
-              "text": "Chapter Three strategy locked. Lanes & objectives revision + team assignments with Niket this week \u2014 stalled last week due to board cycles."
+              "text": "Chapter Three strategy locked. Lanes & objectives revision + team assignments with Niket this week — stalled last week due to board cycles."
             },
             {
               "who": "Arnoe",
-              "text": "Ops OS rolling company-wide this week. Windows install path not yet end-to-end \u2014 running old machine as test rig for Niket's install."
+              "text": "Ops OS rolling company-wide this week. Windows install path not yet end-to-end — running old machine as test rig for Niket's install."
             }
           ]
         }
@@ -185,6 +305,6 @@
     }
   ],
   "meta": {
-    "lastUpdated": "2026-05-04"
+    "lastUpdated": "2026-05-11"
   }
 }
