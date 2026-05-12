@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Pickle × Canva — GTM Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* AUTH GATE */
+#gate{position:fixed;inset:0;background:#080808;z-index:9999;display:flex;align-items:center;justify-content:center}
+#gate.hidden{display:none}
+/* END AUTH GATE */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#080808;--white:#F4F4F0;--dim:#666;--border:#1E1E1E;--card:#101010;
+  --canva:#7B2FBE;--canva-light:#9B4FDE;--canva-bg:#0D0A12;
+  --volt:#DFFF02;
+  --serif:'Instrument Serif',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.container{max-width:1000px;margin:0 auto;padding:0 32px}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(8,8,8,.95);backdrop-filter:blur(12px);z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600}
+.nav-logo .pickle{color:#4ADE80}
+.nav-logo .x{color:var(--dim);margin:0 2px}
+.nav-logo .canva-brand{color:var(--canva-light)}
+.nav-tag{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);background:var(--card);border:1px solid var(--border);padding:5px 12px;border-radius:20px}
+
+/* HERO */
+.hero{padding:80px 32px 64px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(123,47,190,.12) 0%,transparent 60%);pointer-events:none}
+.hero-inner{max-width:760px;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--canva-light);margin-bottom:24px}
+.eyebrow::before{content:'';width:24px;height:1.5px;background:var(--canva-light)}
+h1{font-family:var(--serif);font-size:clamp(40px,6vw,72px);line-height:1.0;letter-spacing:-.02em;margin-bottom:20px}
+h1 em{font-style:italic;color:var(--canva-light)}
+.hero-sub{font-size:18px;font-weight:300;color:rgba(244,244,240,.55);max-width:560px;line-height:1.7;margin-bottom:40px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--canva);color:var(--white);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:13px 28px;border-radius:4px;display:inline-block;transition:background .2s}
+.btn-primary:hover{background:var(--canva-light)}
+.btn-ghost{font-size:13px;font-weight:500;color:var(--dim);border:1px solid var(--border);padding:12px 24px;border-radius:4px;display:inline-block;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:#444;color:var(--white)}
+
+/* STATUS STRIP */
+.status-strip{background:var(--canva-bg);border-top:1px solid rgba(123,47,190,.2);border-bottom:1px solid rgba(123,47,190,.2);padding:16px 32px}
+.status-inner{display:flex;align-items:center;gap:8px;max-width:1000px;margin:0 auto;font-size:13px;color:rgba(244,244,240,.5)}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 6px #4ADE80;flex-shrink:0}
+.status-inner strong{color:var(--white)}
+
+/* DOCS SECTION */
+.section{padding:72px 32px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--canva-light);margin-bottom:12px}
+.section-h{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);line-height:1.1;margin-bottom:8px}
+.section-sub{font-size:16px;color:var(--dim);margin-bottom:40px;line-height:1.6}
+
+.docs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.doc-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:28px 24px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s,background .2s;position:relative;overflow:hidden}
+.doc-card:hover{border-color:rgba(123,47,190,.5);background:#0f0a17}
+.doc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--canva);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.doc-card:hover::before{transform:scaleX(1)}
+.doc-icon{font-size:28px}
+.doc-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--canva-light)}
+.doc-title{font-size:16px;font-weight:600;line-height:1.3}
+.doc-desc{font-size:13px;color:var(--dim);line-height:1.55;flex:1}
+.doc-link{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--canva-light);display:inline-flex;align-items:center;gap:6px;margin-top:4px}
+.doc-link::after{content:'→'}
+
+/* THIS WEEK */
+.week-section{background:#0C0C0C;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.asks-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:0}
+.ask-block{background:var(--card);padding:36px 32px;border:1px solid var(--border)}
+.ask-block h3{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--canva-light);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.ask-block h3 .badge{background:rgba(123,47,190,.15);border:1px solid rgba(123,47,190,.3);font-size:10px;padding:2px 8px;border-radius:10px;font-weight:600;letter-spacing:.1em;color:var(--canva-light)}
+.ask-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.ask-list li{font-size:15px;color:rgba(244,244,240,.75);line-height:1.55;padding-left:18px;position:relative}
+.ask-list li::before{content:'·';position:absolute;left:0;color:var(--canva-light);font-size:18px;line-height:1.2}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;margin-top:40px}
+.tl-row{display:grid;grid-template-columns:80px 1fr;gap:24px;align-items:start;padding:24px 0;border-bottom:1px solid var(--border)}
+.tl-row:last-child{border-bottom:none}
+.tl-week{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--canva-light)}
+.tl-dot-col{display:flex;flex-direction:column;align-items:flex-end;padding-top:4px}
+.tl-dot{width:10px;height:10px;border-radius:50%;border:2px solid var(--canva);flex-shrink:0}
+.tl-dot.active{background:var(--canva);box-shadow:0 0 8px rgba(123,47,190,.6)}
+.tl-content h4{font-size:16px;font-weight:600;margin-bottom:6px}
+.tl-content p{font-size:14px;color:var(--dim);line-height:1.55}
+.tl-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:3px;margin-top:8px}
+.tl-tag.now{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.3);color:#4ADE80}
+.tl-tag.next{background:rgba(123,47,190,.1);border:1px solid rgba(123,47,190,.3);color:var(--canva-light)}
+
+/* GOAL */
+.goal-box{background:linear-gradient(135deg,rgba(123,47,190,.12) 0%,rgba(8,8,8,0) 60%);border:1px solid rgba(123,47,190,.25);border-radius:8px;padding:44px 40px;margin-top:40px;position:relative;overflow:hidden}
+.goal-box::before{content:'◈';position:absolute;right:32px;top:24px;font-size:72px;opacity:.05;color:var(--canva-light)}
+.goal-box .section-label{margin-bottom:8px}
+.goal-box p{font-size:19px;font-weight:300;color:rgba(244,244,240,.8);line-height:1.7;max-width:640px}
+.goal-box p strong{color:var(--white);font-weight:600}
+
+/* DELIVERABLE */
+.deliverable-box{background:var(--card);border:1px solid rgba(245,197,0,.2);border-left:3px solid #F5C500;border-radius:4px;padding:28px 32px;margin-top:24px}
+.deliverable-box .dl-label{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F5C500;margin-bottom:10px}
+.deliverable-box h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.deliverable-box p{font-size:14px;color:var(--dim);line-height:1.6}
+
+/* FOOTER */
+footer{padding:32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logos{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}
+.footer-logos .pickle{color:#4ADE80}
+.footer-logos .x{color:var(--dim)}
+.footer-logos .canva-brand{color:var(--canva-light)}
+footer p{font-size:12px;color:var(--dim)}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .hero{padding:56px 20px 48px}
+  .section{padding:56px 20px}
+  .docs-grid{grid-template-columns:1fr}
+  .asks-grid{grid-template-columns:1fr}
+  .hero-ctas{flex-direction:column}
+  .btn-primary,.btn-ghost{text-align:center}
+  .goal-box{padding:28px 24px}
+  footer{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- MAGIC LINK AUTH GATE -->
+<div id="gate"></div>
+<script>
+(function(){
+  const SESSION_KEY = 'dpCeoHubV3';
+  const PICKLE_ROOT = '/pickle/';
+
+  // Check for valid session in localStorage (same key as /pickle main page)
+  function getSession() {
+    try {
+      const s = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
+      if (s && Date.now() < s.exp) return s;
+    } catch(e) {}
+    return null;
+  }
+
+  const session = getSession();
+  if (session) {
+    // Valid session — hide gate and show page
+    document.getElementById('gate').classList.add('hidden');
+  } else {
+    // No valid session — bounce to /pickle to authenticate, then return here
+    const returnUrl = encodeURIComponent(window.location.pathname);
+    window.location.replace('/pickle/?return=' + returnUrl);
+  }
+})();
+</script>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="pickle">Design Pickle</span>
+    <span class="x">×</span>
+    <span class="canva-brand">Canva</span>
+  </div>
+  <div class="nav-tag">GTM Hub · Internal</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Go-To-Market</div>
+    <h1>Canva AE<br><em>Partner Program.</em></h1>
+    <p class="hero-sub">This isn't a sales pitch to Canva reps. It's an intro to who we are, what we do, and how we can support them with co-selling — so when their clients need creative execution, they loop us in.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="https://dp1-cms-ui.vercel.app/canva" target="_blank" rel="noopener">View Landing Page (Dev) →</a>
+      <a class="btn-ghost" href="#docs">See All Resources</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS STRIP -->
+<div class="status-strip">
+  <div class="status-inner">
+    <div class="status-dot"></div>
+    <strong>This Week:</strong>&nbsp;Finalizing details — lead capture, demo experience & outbound copy. Launch to Canva AEs next week.
+  </div>
+</div>
+
+<!-- DOCS -->
+<section class="section" id="docs">
+  <div class="container">
+    <div class="section-label">Resources</div>
+    <h2 class="section-h">Key Documents</h2>
+    <p class="section-sub">Everything needed to finalize, train, and launch.</p>
+    <div class="docs-grid">
+
+      <a class="doc-card" href="https://canva.link/e0w6j1r491mxje0" target="_blank" rel="noopener">
+        <div class="doc-icon">🔍</div>
+        <div class="doc-label">Research</div>
+        <div class="doc-title">Discovery Output</div>
+        <div class="doc-desc">Initial discovery findings — ICP, positioning, Canva rep landscape, and opportunity sizing.</div>
+        <span class="doc-link">Open Document</span>
+      </a>
+
+      <a class="doc-card" href="https://www.canva.com/design/DAHI7A70Wtg/cAUmgFJoR97d5-KcO-MMhw/edit" target="_blank" rel="noopener">
+        <div class="doc-icon">📊</div>
+        <div class="doc-label">Presentation</div>
+        <div class="doc-title">Discovery Call Deck</div>
+        <div class="doc-desc">The full Canva partnership discovery deck — strategy, positioning, and co-selling framework for AE conversations.</div>
+        <span class="doc-link">Open in Canva</span>
+      </a>
+
+      <a class="doc-card" href="https://dp1-cms-ui.vercel.app/canva" target="_blank" rel="noopener">
+        <div class="doc-icon">🌐</div>
+        <div class="doc-label">Landing Page · Dev</div>
+        <div class="doc-title">Canva Partner Page</div>
+        <div class="doc-desc">The live (dev) landing page for Canva AEs — what we'll send reps to understand who we are and how to loop us in.</div>
+        <span class="doc-link">View Live Page</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- THIS WEEK + THE ASK -->
+<section class="section week-section">
+  <div class="container">
+    <div class="section-label">Execution</div>
+    <h2 class="section-h">The Plan</h2>
+    <p class="section-sub">What we're building and who's doing what.</p>
+    <div class="asks-grid">
+
+      <div class="ask-block">
+        <h3>This Week <span class="badge">Now</span></h3>
+        <ul class="ask-list">
+          <li>Finalize lead capture and initial demo experience on the landing page</li>
+          <li>Develop outbound copy for the team to use when reaching Canva AE reps</li>
+          <li>Onboard reps to Canva CRM and assign team members to outbound</li>
+        </ul>
+      </div>
+
+      <div class="ask-block">
+        <h3>The Message to AEs <span class="badge">Framing</span></h3>
+        <ul class="ask-list">
+          <li>This is <strong>not</strong> a pitch to Canva reps — it's an introduction</li>
+          <li>"Here's what we do in the market, and we want you to know us so you can co-sell with confidence"</li>
+          <li>The goal: when a Canva client needs creative execution, AEs think of us first</li>
+          <li>Simple, low-friction ask — just loop us in when the timing is right</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Timeline</div>
+    <h2 class="section-h">Launch Sequence</h2>
+    <div class="timeline">
+
+      <div class="tl-row">
+        <div class="tl-dot-col"><div class="tl-week">Week 1</div></div>
+        <div class="tl-content">
+          <h4>Finalize Details</h4>
+          <p>Lead capture flow, demo experience, outbound copy complete. Reps loaded into Canva CRM and assigned.</p>
+          <span class="tl-tag now">In Progress</span>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-dot-col"><div class="tl-week">Week 2</div></div>
+        <div class="tl-content">
+          <h4>Train & Test with Team</h4>
+          <p>Run team through the 2-step consultation flow. Finalize pricing guidance and process. Test outbound messaging with internal review before launch.</p>
+          <span class="tl-tag next">Next Week</span>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-dot-col"><div class="tl-week">Week 2</div></div>
+        <div class="tl-content">
+          <h4>Launch Outbound to Canva AEs</h4>
+          <p>Begin outbound to Canva AE reps using finalized copy and the partner landing page. Track response rates and refine messaging.</p>
+          <span class="tl-tag next">Next Week</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GOAL -->
+    <div class="goal-box">
+      <div class="section-label">Overall Goal</div>
+      <p>Get in front of and <strong>create as many relationships as possible</strong> for Canva-led referrals — building a pipeline of AEs who know us well enough to loop us in when their clients need creative execution support.</p>
+    </div>
+
+    <!-- OUTSTANDING DELIVERABLE -->
+    <div class="deliverable-box">
+      <div class="dl-label">⚠️ Outstanding Deliverable</div>
+      <h3>Canva AE Quick-Start Guide</h3>
+      <p>A simple 3-page Canva presentation built directly for AEs. Simple messaging. Simple CTA. Tells them exactly who we are and how to loop us in — nothing more. No fluff, no pitch deck energy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logos">
+    <span class="pickle">Design Pickle</span>
+    <span class="x">×</span>
+    <span class="canva-brand">Canva</span>
+  </div>
+  <p>Internal GTM Hub · Not for external distribution</p>
+</footer>
+
+</body>
+</html>
