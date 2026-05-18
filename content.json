@@ -1,30 +1,30 @@
 {
   "post": {
-    "tag": "W20-2026",
-    "title": "Demand Gen is the Moment",
-    "body": "The Jar roadmap is locked — three months of clarity from an incredible collaborative effort by Arnoe, Janco, and the team. That's the good news, and it's a big win.\n\nNow we turn to the next constraint: growth. Lead volume hit historic lows last week. This is not one person's problem — it's a company-wide moment to rally. Outbound is being built. The Canva GTM campaign is in final handoff to sales. Focus is our #1 lever right now, and I'm asking every GTM-adjacent leader to bring their energy here.\n\nI'm OOO Wednesday–Friday this week. Teams should be locked in and executing."
+    "tag": "W21-2026",
+    "title": "Execution Week",
+    "body": "Ops OS is done. Full team adoption — a genuine mega success. Thank you for leaning in.\n\nNow we execute. I'm back from OOO and already in motion. CHIPS officially kicks off this week — first real work sessions. Canva GTM outbound starts, with Anja and Jen leading the charge on AE outreach. Demand gen stack ranking lands today and drives the next two weeks of GTM quick wins.\n\nToday's all-hands huddle includes the first major milestone on the team's AI skills journey: company-wide AI demo day is officially announced. The next three weeks are practical and business-focused. The goal is AI that solves real problems — not experiments, but outcomes."
   },
   "outcomes": {
     "week": [
       {
-        "status": "progress",
-        "text": "Rally player/coach leaders around demand gen — outbound system back online"
-      },
-      {
-        "status": "progress",
-        "text": "Canva GTM campaign handoff to sales — finalize and go live"
-      },
-      {
         "status": "done",
-        "text": "Jar + master roadmap locked for 3 months"
-      },
-      {
-        "status": "pending",
-        "text": "Brief Butler working session (Rob, Arnoe, Janelle, Lacey)"
+        "text": "Ops OS rollout complete — full team adoption achieved, mega success"
       },
       {
         "status": "progress",
-        "text": "Ops OS final rollout week — nearly full team adoption"
+        "text": "CHIPS kicks off — first real work sessions begin this week"
+      },
+      {
+        "status": "progress",
+        "text": "Canva GTM outbound launch — Anja and Jen leading AE cold outreach program"
+      },
+      {
+        "status": "progress",
+        "text": "Demand gen stack ranking — Niket finalizing prioritized list; drives next two weeks of GTM execution"
+      },
+      {
+        "status": "progress",
+        "text": "Company-wide AI demo day announced — first showcase of team AI work"
       }
     ],
     "month": [
@@ -38,15 +38,15 @@
       },
       {
         "status": "progress",
-        "text": "Consolidated Comms shipped end of May (64% done)"
+        "text": "Consolidated Comms code complete; in testing (target: end of May)"
       },
       {
-        "status": "pending",
-        "text": "CHIPS alpha build resumes — Week 21"
+        "status": "progress",
+        "text": "CHIPS alpha build kicks off — Week 21"
       },
       {
-        "status": "pending",
-        "text": "AI for Operators next cohort open (end of May)"
+        "status": "progress",
+        "text": "AI COS Night Class transitioning to on-demand course for all FTEs"
       }
     ]
   },
@@ -83,6 +83,126 @@
     }
   ],
   "archive": [
+    {
+      "date": "May 18",
+      "title": "Week 21 — Execution Begins",
+      "body": [
+        {
+          "section": "🟢 Subscriptions (Lane 1)",
+          "signals": [
+            {
+              "who": "Jen",
+              "text": "Net MRR: -$20,002 (week of 5/11), down sharply from +$8,327 the prior week. New MRR: +$18,363; Churn: -$14,536 (improved); Contraction: -$27,546 (widened); Expansion: +$3,717 (collapsed from +$23,414). Two consecutive weeks of historic demo lows: 19 created / 17 completed vs. 60+ target. Working with Bryan on recovery; OA restart is the primary lever."
+            },
+            {
+              "who": "Jen",
+              "text": "Ambral concerns: 300+ signals is too many — majority are duplicative of what the team already knows. Intercom integration not working as intended. $45k annual commitment was signed without being communicated internally. When signals become proactive, will need better integration with existing tools."
+            },
+            {
+              "who": "Brooke",
+              "text": "10 client-facing calls this week: 6 onboardings (On Air Brands, LaundroBOOST, SpotHero, Orangellow, Bluespring Wealth, Zeus Fire & Security) + 4 account syncs. AI-assisted churn review running across portfolio using Ambral."
+            },
+            {
+              "who": "Brooke",
+              "text": "Critical churn risk — Commonwealth Health: active cancellation risk. Client flagged brand mixing (Commonwealth Health assets delivered with Tenor Health branding), quality regression since designated designer → team transition, and is 'looking at other options.' Two new Jira tickets opened 5/15. Downgrade to monthly plan requested on renewal. Needs immediate personal outreach and clear action plan."
+            },
+            {
+              "who": "Brooke",
+              "text": "Cancellation confirmed — Yotta Event: cancel set for July 8th. Upgraded in April, new user onboarding escalated in May, now canceling. July 8 window remains for a save conversation if warranted."
+            },
+            {
+              "who": "Brooke",
+              "text": "Escalating quality risk — Immersive Gamebox: two quality issues in two weeks from a client who upgraded a month ago. Latest LFR: 'looked terrible.' Escalated to Sara Giraldo for AD support review — in progress."
+            },
+            {
+              "who": "Brooke",
+              "text": "Multi-year escalation — Orangellow: two calls this week (5/11 + 5/14 with full team). Client left a review and requested the meeting. Ongoing issues: cost, quality, speed. Open action items from SD-17441 (AD review + check-in call) still on hold — these are critical next actions."
+            },
+            {
+              "who": "Lacey",
+              "text": "Exploring Intercom AI tools to streamline CS workflows. Building Intercom reports for leads and Picklebot responses. Getting into Ambral to catch up on churn signals and prepare for broader rep onboarding."
+            },
+            {
+              "who": "Leslie",
+              "text": "Client onboarding and check-in calls, Ambral churn risk identification underway. Win: de-escalated a new customer whose account was not activated in time for their onboarding call. Win: successful onboarding with follow-up calls scheduled for a short-term urgent account."
+            }
+          ]
+        },
+        {
+          "section": "🔵 Jar (Lane 2)",
+          "signals": [
+            {
+              "who": "Magda",
+              "text": "Consolidated comms is code complete. Now in testing and bug-fix phase ahead of internal testing. On track for end-of-May target."
+            }
+          ]
+        },
+        {
+          "section": "🟡 CHIPS (Lane 3)",
+          "signals": [
+            {
+              "who": "Russ",
+              "text": "CHIPS officially kicks off this week. First real work sessions begin — Jar roadmap lock freed up bandwidth to re-engage. This is now the primary lane alongside GTM support."
+            }
+          ]
+        },
+        {
+          "section": "🤝 Canva",
+          "signals": [
+            {
+              "who": "Jen",
+              "text": "Collected overdue $30k invoice from Canva — resolved. Meeting with James today (rescheduled from last week). Cold outreach to Canva AEs planned for after Memorial Day. Note: Canva requesting DP upload client list into their system for AE upsell outreach — not recommended; one-sided and creates unsolicited outreach risk. Needs further discussion."
+            },
+            {
+              "who": "Anja",
+              "text": "Meeting with Jen today to launch AE cold outreach program. Claude integrations for sales live and in active use. Hit 50% MRR weekly target via pipeline build-out last week."
+            },
+            {
+              "who": "Russ",
+              "text": "Following up with Meg Moss on partnership proposal. Affinity transition: Canva wants DP to define 'what good looks like' (training, press release, revenue targets) — response pending from Meg. ENT Studio conversations expected to resume to confirm 2026 vs. 2027 scope."
+            }
+          ]
+        },
+        {
+          "section": "💰 Cost & Runway",
+          "signals": [
+            {
+              "who": "Jen",
+              "text": "HubSpot renewal in negotiation — two-part cost reduction strategy: (1) Rev Hero for CS meeting calendars (cheaper alternative to HubSpot seats for non-sales staff), (2) reducing marketing contacts with Empty Cup. Both in progress with Alesha."
+            },
+            {
+              "who": "Jen",
+              "text": "Gong AI rollout paused — engineering prioritizing AE/Salesforce integration first; CSMs are next after AEs complete."
+            }
+          ]
+        },
+        {
+          "section": "⚙️ Leadership & Org",
+          "signals": [
+            {
+              "who": "Russ",
+              "text": "Company-wide AI demo day announced at today's all-hands huddle — first formal milestone in the team's AI skills journey. Teams will present where they are and inspire each other. Goal: practical, business-focused AI execution over the next three weeks."
+            },
+            {
+              "who": "Russ",
+              "text": "MBR tomorrow (May 19) — reviewing May performance and setting the next two weeks' priorities. Niket presenting AI-powered data analysis as a personal challenge."
+            },
+            {
+              "who": "Russ",
+              "text": "Demand gen stack ranking: Niket finalizing prioritized list today. IDS item for leadership meeting. Output drives next two weeks of GTM quick wins from the brainstorm session."
+            },
+            {
+              "who": "Anja",
+              "text": "Attended AI COS Session 4 (Full Autonomy, May 17). Takeaway: clarity on when to use Claude vs. AI Chief of Staff for contextual tasks, plus maintenance protocols (weekly updates, automated Sunday systems review). Applying to sales AI tooling scale."
+            },
+            {
+              "who": "Russ",
+              "text": "AI COS Night Class transitioning to an on-demand course accessible to all FTEs next week. Ops OS rollout: 100% team adoption — complete."
+            }
+          ]
+        }
+      ]
+    },
     {
       "date": "May 11",
       "title": "Week 20 — Demand Gen Reset",
@@ -305,6 +425,6 @@
     }
   ],
   "meta": {
-    "lastUpdated": "2026-05-11"
+    "lastUpdated": "2026-05-18"
   }
 }
